@@ -1,6 +1,38 @@
 ﻿
-<div class="experience">
+@using Portfolio.Core
 
-    <h2>Experience</h2>
+@model List<Experience>
 
-</div>
+
+    <div class="experience">
+
+        <h2>Experience</h2>
+        @foreach (var job in Model)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h4>@job.Company</h4>
+                </div>
+
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Position</th>
+                            <td>@job.Position</td>
+                        </tr>
+                        <tr>
+                            <th>Main Functions</th>
+                            <td>@job.MainFunctions</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <small>TO-DO Dates</small>
+                </div>
+
+            </div> 
+            <br />
+            <br />
+        }
+
+    </div>

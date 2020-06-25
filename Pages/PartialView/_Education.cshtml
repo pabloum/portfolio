@@ -1,7 +1,25 @@
-﻿
-<div class="education">
+﻿@using Portfolio.Core
 
-    <h2>Education</h2>
+@model List<Education>
 
-    Aeronautical engineer - Mechanical Engineer
-</div>
+    <div class="education">
+
+        <h2>Education</h2>
+
+        @foreach (var study in Model)
+        {
+            <div>
+                @study.Title
+            </div>
+
+            <small>
+                @study.DateBegining - @study.DateEnd
+            </small>
+
+            <div>
+                @study.University
+            </div>
+            
+            <hr />
+        }
+    </div>

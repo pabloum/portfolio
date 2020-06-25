@@ -13,19 +13,25 @@ namespace Portfolio.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IPablosData pablosData;
+        private readonly IPablosData PablosData;
 
-        public PersonalInformation Pablo { get; set; }
+        public PersonalInformation Information { get; set; }
+        public List<Education> Education { get; set; }
+        public List<Experience> Experience { get; set; }
+        public List<Portafolio> Portafolio { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IPablosData pablosData)
         {
             _logger = logger;
-            this.pablosData = pablosData;
+            this.PablosData = pablosData;
         }
 
         public void OnGet()
         {
-            Pablo = pablosData.GetInformation();
+            Information = PablosData.GetInformation();
+            Education = PablosData.GetEducation();
+            Experience = PablosData.GetExperience();
+            Portafolio = PablosData.GetPortafolio();
         }
     }
 }
