@@ -1,0 +1,59 @@
+﻿@using Portfolio.Core
+
+@model PersonalInformation
+
+<h2>About me</h2>
+
+<div class="about-me">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>@Model.GetAge()</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>
+                    @foreach (var profession in @Model.Professions)
+                    { 
+                        <span>@profession</span> <br> 
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Job</th>
+                <td>@Model.Job</td>
+            </tr>
+            <tr>
+                <th>Programming languages</th>
+                <td>
+                    @foreach (var language in @Model.ProgrammingLanguages)
+                    {
+                        <span>@language</span> <br>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Languages</th>
+                <td>
+                    @foreach (var language in @Model.NaturalLanguages)
+                    {
+                        <span>@language</span> <br>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>@Model.PhoneNumber</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>@Model.EmailAddress</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
