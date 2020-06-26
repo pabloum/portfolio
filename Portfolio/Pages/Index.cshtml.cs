@@ -18,7 +18,7 @@ namespace Portfolio.Pages
         public PersonalInformation Information { get; set; }
         public List<Education> Education { get; set; }
         public List<Experience> Experience { get; set; }
-        public List<Portafolio> Portafolio { get; set; }
+        public List<Project> Portafolio { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IPablosData pablosData)
         {
