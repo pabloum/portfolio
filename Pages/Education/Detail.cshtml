@@ -1,0 +1,25 @@
+﻿@page "{educationId:int?}"
+@model Portfolio.DetailEducationModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>Detail Education</h1>
+
+<h2>@Model.Education.Title</h2>
+
+<div>
+    @Model.Education.University
+</div>
+
+<div>
+    @Model.Education.DateBegining - @Model.Education.DateEnd
+</div>
+
+<a class="btn btn-danger"
+   asp-page="./Delete"
+   asp-route-educationId="@Model.Education.Id">
+    Delete this Experience!
+</a>
+
+<a asp-page="/index" class="btn btn-info"> Home</a>

@@ -1,0 +1,17 @@
+﻿@page "{experienceId:int?}"
+@model Portfolio.DeleteExperienceModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Experience</h1>
+
+<div class="alert alert-danger">
+    Are you sure you want to delete @Model.Experience.Position in @Model.Experience.Company ?
+</div>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Yes!</button>
+    <a asp-page="/index" class="btn btn-info">Cancel</a>
+</form>
+

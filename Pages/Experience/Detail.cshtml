@@ -1,0 +1,30 @@
+﻿@page "{experienceId:int?}"
+@model Portfolio.DetailExperienceModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>Detail Experience</h1>
+
+<h2>@Model.Experience.Company</h2>
+
+<div>
+    @Model.Experience.Position
+</div>
+
+<div>
+    @Model.Experience.MainFunctions
+</div>
+
+<div>
+    @Model.Experience.Technologies
+</div>
+
+<a class="btn btn-danger"
+   asp-page="./Delete"
+   asp-route-experienceId="@Model.Experience.Id">
+    Delete this Experience!
+</a>
+
+<a asp-page="/index" class="btn btn-info"> Home</a>
+
