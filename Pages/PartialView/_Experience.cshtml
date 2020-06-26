@@ -14,7 +14,30 @@
         {
             <div class="card">
                 <div class="card-header">
-                    <h4>@job.Company</h4>
+                    
+                    <div class="container d-flex h-100">
+                        <div class="row justify-content-center align-self-center">
+                            <h4>@job.Company</h4>
+                        </div>
+                        <div class="ml-auto">
+                            <a class="btn btn-lg"
+                               asp-page="Experience/Detail"
+                               asp-route-experienceId="@job.Id">
+                                &#128270;
+                            </a>
+                            <a class="btn btn-lg"
+                               asp-page="Experience/Edit"
+                               asp-route-experienceId="@job.Id">
+                                &#x270D;
+                            </a>
+                            <a class="btn btn-lg"
+                               asp-page="Experience/Delete"
+                               asp-route-experienceId="@job.Id">
+                                &#128465;
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="card-body">

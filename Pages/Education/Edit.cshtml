@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{educationId:int?}"
 @model Portfolio.EditEducationModel
 @{
     ViewData["Title"] = "EditEducation";
@@ -7,6 +7,8 @@
 <h1>Edit Education</h1>
 
 <form method="post">
+
+    <input type="hidden" asp-for="Education.Id" />
 
     <div class="form-group">
         <label asp-for="Education.Title"></label>

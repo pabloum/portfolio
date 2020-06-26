@@ -6,22 +6,49 @@
 
         <h2>Education</h2>
 
-        <a class="btn btn-primary" asp-page="/CreateUpdate/EditEducation">Add</a>
+        <a class="btn btn-primary" asp-page="/Education/Edit">Add</a>
 
-        @foreach (var study in Model)
-        {
-            <div>
-                @study.Title
-            </div>
+        <div class="container">
+            @foreach (var study in Model)
+            {
+                <div class="row justify-content-center align-self-center">
+                    <div class="col">
+                        <div>
+                            @study.Title
+                        </div>
 
-            <small>
-                @study.DateBegining - @study.DateEnd
-            </small>
+                        <small>
+                            @study.DateBegining - @study.DateEnd
+                        </small>
 
-            <div>
-                @study.University
-            </div>
-            
-            <hr />
-        }
+                        <div>
+                            @study.University
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="float-right">
+                            <a class="btn btn-lg"
+                               asp-page="Education/Detail"
+                               asp-route-educationId="@study.Id">
+                                &#128270;
+                            </a>
+                            <a class="btn btn-lg"
+                               asp-page="Education/Edit"
+                               asp-route-educationId="@study.Id">
+                                &#x270D;
+                            </a>
+                            <a class="btn btn-lg"
+                               asp-page="Education/Delete"
+                               asp-route-educationId="@study.Id">
+                                &#128465;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <br />
+            }
+        </div>
+
+        
     </div>

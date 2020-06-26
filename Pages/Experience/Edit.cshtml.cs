@@ -9,49 +9,49 @@ using Portfolio.Data;
 
 namespace Portfolio
 {
-    public class EditEducationModel : PageModel
+    public class EditExperienceModel : PageModel
     {
-        private readonly IRepository<Education> educationDao;
+        private readonly IRepository<Experience> experienceDao;
 
-        [BindProperty]
-        public Education Education { get; set; }
+        [BindProperty ]
+        public Experience Experience { get; set; }
 
-        public EditEducationModel(IRepository<Education> educationDao)
+        public EditExperienceModel(IRepository<Experience> experienceDao)
         {
-            this.educationDao = educationDao;
+            this.experienceDao = experienceDao;
         }
-        public IActionResult OnGet(int? educationId)
+
+        public IActionResult OnGet(int? experienceId)
         {
-            if (educationId.HasValue)
+            if (experienceId.HasValue)
             {
-                Education = educationDao.Read(1);
+                Experience = experienceDao.Read(experienceId.Value);
             }
             else
             {
-                Education = new Education();
+                Experience = new Experience();
             }
 
-            if (Education == null)
+            if (Experience == null)
             {
                 return RedirectToPage("/index");
             }
 
             return Page();
         }
-        
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                if (false) // ToDo:: Restaurant.Id > 0
+                if (Experience.Id > 0) 
                 {
                     TempData["Message"] = "Study updated!";
-                    educationDao.Update(Education);
+                    experienceDao.Update(Experience);
                 }
                 else
                 {
                     TempData["Message"] = "Study created!";
-                    educationDao.Create(Education);
+                    experienceDao.Create(Experience);
                 }
 
                 //pablosData.Commit();
