@@ -92,7 +92,6 @@ body {
     margin-right: 30px;
 }
 
-.align-vertical {
-    vertical-align: middle;
-    margin: auto;
+.card {
+    margin: 20px;;
 }
