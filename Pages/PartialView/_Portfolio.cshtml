@@ -2,9 +2,10 @@
 
 @model List<Portafolio>
 
-<div class="portfolio">
+    <div class="portfolio">
 
-    <h2>Portfolio</h2>
+        @{string @title = "Portafolio"; }
+        <partial name="_SectionTitle" model="title" />
 
-    A lot of things
-</div>
+        A lot of things
+    </div>

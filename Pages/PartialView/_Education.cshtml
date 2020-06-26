@@ -4,9 +4,8 @@
 
     <div class="education">
 
-        <h2>Education</h2>
-
-        <a class="btn btn-primary" asp-page="/Education/Edit">Add</a>
+        @{string @title = "Education"; }
+        <partial name="_SectionTitle" model="title" />
 
         <div class="container">
             @foreach (var study in Model)
@@ -50,5 +49,5 @@
             }
         </div>
 
-        
+
     </div>

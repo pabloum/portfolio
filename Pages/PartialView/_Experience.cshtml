@@ -5,16 +5,14 @@
 
 
     <div class="experience">
-
-        <h2>Experience</h2>
-
-        <a class="btn btn-primary" asp-page="/CreateUpdate/EditExperience">Add</a>
-
+        @{string @title = "Experience"; }
+        <partial name="_SectionTitle" model="title" />
+        
         @foreach (var job in Model)
         {
             <div class="card">
                 <div class="card-header">
-                    
+
                     <div class="container d-flex h-100">
                         <div class="row justify-content-center align-self-center">
                             <h4>@job.Company</h4>
@@ -56,9 +54,8 @@
                     <small>TO-DO Dates</small>
                 </div>
 
-            </div> 
+            </div>
             <br />
             <br />
         }
-
     </div>
