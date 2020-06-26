@@ -7,7 +7,7 @@ namespace Portfolio.Data
 {
     public class InMemoryEducationDao : IRepository<Education>
     {
-        public List<Education> Education { get; set; }
+        private List<Education> Education { get; set; }
 
         public InMemoryEducationDao()
         {
