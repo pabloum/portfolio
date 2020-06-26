@@ -9,5 +9,6 @@ namespace Portfolio.Data
         List<Education> GetEducation();
         List<Experience> GetExperience();
         List<Project> GetPortafolio();
+        List<Skill> GetSkills();
     }
 }

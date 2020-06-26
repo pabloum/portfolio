@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Portfolio.Core;
 using Portfolio.Data;
+using Portfolio.Data.InMemory;
 
 namespace Portfolio
 {
@@ -28,6 +29,8 @@ namespace Portfolio
             services.AddSingleton<IPablosData, InMemoryInformation>();
             services.AddSingleton<IRepository<Education>, InMemoryEducationDao>();
             services.AddSingleton<IRepository<Experience>, InMemoryExperienceDao>();
+            services.AddSingleton<IRepository<Project>, InMemoryProjectDao>();
+            services.AddSingleton<IRepository<Skill>, InMemorySkillsDao>();
             services.AddRazorPages();
         }
 

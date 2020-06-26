@@ -1,7 +1,24 @@
 ﻿
+@using Portfolio.Core
+
+@model List<Skill>
+
     <div class="profile">
         @{string @title = "Skills"; }
         <partial name="_SectionTitle" model="title" />
-        
-        A lot!
+
+        @foreach (var skill in Model)
+        {
+            <div>
+                Skill: @skill.Name
+            </div>
+            <div>
+                Autonomy: @skill.Percentage %
+            </div>
+            <div>
+                Category: @skill.Category
+            </div>
+            <hr />
+        }
+
     </div>

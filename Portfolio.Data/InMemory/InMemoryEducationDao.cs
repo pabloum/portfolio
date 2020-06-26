@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Portfolio.Data
+namespace Portfolio.Data.InMemory
 {
     public class InMemoryEducationDao : IRepository<Education>
     {

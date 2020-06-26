@@ -18,6 +18,7 @@ namespace Portfolio.Pages
         public PersonalInformation Information { get; set; }
         public List<Education> Education { get; set; }
         public List<Experience> Experience { get; set; }
+        public List<Skill> Skills { get; set; }
         public List<Project> Portafolio { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IPablosData pablosData)
@@ -32,6 +33,7 @@ namespace Portfolio.Pages
             Education = PablosData.GetEducation();
             Experience = PablosData.GetExperience();
             Portafolio = PablosData.GetPortafolio();
+            Skills =    PablosData.GetSkills();
         }
     }
 }

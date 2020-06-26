@@ -7,5 +7,17 @@
         @{string @title = "Portafolio"; }
         <partial name="_SectionTitle" model="title" />
 
-        A lot of things
+        @foreach (var project in Model)
+        {
+            <div>
+                Name: @project.ProjectName
+            </div>
+            <div>
+                Description: @project.Description
+            </div>
+            <div>
+                Technologies: @project.Technologies
+            </div>
+            <hr />
+        }
     </div>

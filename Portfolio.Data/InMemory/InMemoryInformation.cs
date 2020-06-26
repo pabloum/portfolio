@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using Portfolio.Core;
 
-namespace Portfolio.Data
+namespace Portfolio.Data.InMemory
 {
     public class InMemoryInformation : IPablosData
     {
         private readonly IRepository<Education> _educationDao;
         private readonly IRepository<Experience> _experienceDao;
+        private readonly IRepository<Skill> _skillsDao;
+        private readonly IRepository<Project> _projectDao;
 
         public PersonalInformation Information { get; set; }
         public List<Education> Education { get; set; }
         public List<Experience> Experience { get; set; }
         public List<Project> Projects { get; set; }
+        public List<Skill> Skills { get; set; }
 
-        public InMemoryInformation(IRepository<Education> educationDao, IRepository<Experience> experienceDao)
+        public InMemoryInformation(IRepository<Education> educationDao, IRepository<Experience> experienceDao, 
+                                   IRepository<Skill> skillsDao, IRepository<Project> projectDao)
         {
             _educationDao = educationDao;
             _experienceDao = experienceDao;
+            _skillsDao = skillsDao;
+            _projectDao = projectDao;
 
             Information = new PersonalInformation
             {
@@ -35,10 +41,9 @@ namespace Portfolio.Data
 
             Experience = (List<Experience>)_experienceDao.GetAll();
 
-            Projects = new List<Project>
-            {
-                new Project { }
-            };
+            Skills = (List<Skill>)_skillsDao.GetAll();
+
+            Projects = (List<Project>)_projectDao.GetAll();
         }
 
         public PersonalInformation GetInformation()
@@ -60,7 +65,14 @@ namespace Portfolio.Data
 
         public List<Project> GetPortafolio()
         {
+            Projects = (List<Project>)_projectDao.GetAll();
             return Projects;
+        }
+
+        public List<Skill> GetSkills()
+        {
+            Skills = (List<Skill>)_skillsDao.GetAll();
+            return Skills;
         }
     }
 }
