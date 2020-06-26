@@ -1,0 +1,30 @@
+﻿@page
+@model Portfolio.EditExperienceModel
+@{
+    ViewData["Title"] = "EditExperience";
+}
+
+<h1>EditExperience</h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="Experience.Company"></label>
+        <input asp-for="Experience.Company" class="form-control" />
+        <span class="text-danger" asp-validation-for="Experience.Company"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Experience.MainFunctions"></label>
+        <input asp-for="Experience.MainFunctions" class="form-control" />
+        <span class="text-danger" asp-validation-for="Experience.MainFunctions"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Experience.Position"></label>
+        <input asp-for="Experience.Position" class="form-control" />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Save &#128190;</button>
+
+</form>

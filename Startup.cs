@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Portfolio.Core;
 using Portfolio.Data;
 
 namespace Portfolio
@@ -25,6 +26,8 @@ namespace Portfolio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IPablosData, InMemoryInformation>();
+            services.AddSingleton<IRepository<Education>, InMemoryEducationDao>();
+            services.AddSingleton<IRepository<Experience>, InMemoryExperienceDao>();
             services.AddRazorPages();
         }
 
