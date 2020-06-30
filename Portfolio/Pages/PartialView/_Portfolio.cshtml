@@ -9,15 +9,40 @@
 
         @foreach (var project in Model)
         {
-            <div>
-                Name: @project.ProjectName
+            <div class="row justify-content-center align-self-center">
+                <div class="col">
+                    <div>
+                        Name: @project.ProjectName
+                    </div>
+                    <div>
+                        Description: @project.Description
+                    </div>
+                    <div>
+                        Technologies: @project.Technologies
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="float-right">
+                        <a class="btn btn-lg"
+                           asp-page="Projects/Detail"
+                           asp-route-projectId="@project.Id">
+                            &#128270;
+                        </a>
+                        <a class="btn btn-lg"
+                           asp-page="Projects/Edit"
+                           asp-route-projectId="@project.Id">
+                            &#x270D;
+                        </a>
+                        <a class="btn btn-lg"
+                           asp-page="Projects/Delete"
+                           asp-route-projectId="@project.Id">
+                            &#128465;
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div>
-                Description: @project.Description
-            </div>
-            <div>
-                Technologies: @project.Technologies
-            </div>
+
             <hr />
+
         }
     </div>
