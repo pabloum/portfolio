@@ -9,18 +9,22 @@
 
         @foreach (var skill in Model)
         {
-            <div>
-                Skill: @skill.Name
+            <div class="row justify-content-center align-self-center">
+                <div class="col">
+                    <p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: @skill.Percentage%" aria-valuenow="@skill.Percentage" aria-valuemin="0" aria-valuemax="100">@skill.Name - Estimated autonomy: @skill.Percentage%</div>
+                        </div>
+                    </p>
+                    <p>
+                        Category: @skill.Category
+                    </p>
+                </div>
+                <div class="col">
+                    <span><a asp-page="Skills/Delete" asp-route-skillId="@skill.Id" class="btn btn-danger float-right">&#128465;</a></span>
+                </div>
             </div>
-            <div>
-                Autonomy: @skill.Percentage %
-            </div>
-            <div>
-                Category: @skill.Category
-            </div>
-
-            <span><a asp-page="Skills/Delete" asp-route-skillId="@skill.Id" class="btn btn-danger">&#128465;</a></span>
-
+            
             <hr />
         }
 
