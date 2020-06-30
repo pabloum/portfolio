@@ -13,7 +13,7 @@ namespace Portfolio
     {
         private readonly IRepository<Experience> experienceDao;
 
-        [BindProperty ]
+        [BindProperty]
         public Experience Experience { get; set; }
 
         public EditExperienceModel(IRepository<Experience> experienceDao)
@@ -45,12 +45,12 @@ namespace Portfolio
             {
                 if (Experience.Id > 0) 
                 {
-                    TempData["Message"] = "Study updated!";
+                    TempData["Message"] = "Work updated!";
                     experienceDao.Update(Experience);
                 }
                 else
                 {
-                    TempData["Message"] = "Study created!";
+                    TempData["Message"] = "Work created!";
                     experienceDao.Create(Experience);
                 }
 

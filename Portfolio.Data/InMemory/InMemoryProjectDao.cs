@@ -36,8 +36,9 @@ namespace Portfolio.Data.InMemory
 
             if (result != null)
             {
-                // TODO. I'm not sure if this solution works
-                result = project;
+                result.ProjectName = project.ProjectName;
+                result.Technologies = project.Technologies;
+                result.Description = project.Description;
             }
         }
 

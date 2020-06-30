@@ -1,0 +1,32 @@
+﻿@page "{skillId:int?}"
+@model Portfolio.Pages.Skills.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Skill</h1>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Skill.Id" />
+
+    <div class="form-group">
+        <label asp-for="Skill.Name"></label>
+        <input asp-for="Skill.Name" class="form-control"/>
+        <span class="text-danger" asp-validation-for="Skill.Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Skill.Percentage"></label>
+        <input asp-for="Skill.Percentage" class="form-control"/>
+        <span class="text-danger" asp-validation-for="Skill.Percentage"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Skill.Category"></label>
+        <input asp-for="Skill.Category" class="form-control"/>
+        <span class="text-danger" asp-validation-for="Skill.Category"></span>
+    </div>
+
+    <button type="submit" class="btn btn-dark">Save &#128190;</button>
+</form>

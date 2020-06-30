@@ -2,7 +2,7 @@
 
 @model List<Education>
 
-    <div class="education">
+    <div id="education">
 
         @{string @title = "Education"; }
         <partial name="_SectionTitle" model="title" />
@@ -27,17 +27,17 @@
                     <div class="col">
                         <div class="float-right">
                             <a class="btn btn-lg"
-                               asp-page="Education/Detail"
+                               asp-page="EducationSection/Detail"
                                asp-route-educationId="@study.Id">
                                 &#128270;
                             </a>
                             <a class="btn btn-lg"
-                               asp-page="Education/Edit"
+                               asp-page="EducationSection/Edit"
                                asp-route-educationId="@study.Id">
                                 &#x270D;
                             </a>
                             <a class="btn btn-lg"
-                               asp-page="Education/Delete"
+                               asp-page="EducationSection/Delete"
                                asp-route-educationId="@study.Id">
                                 &#128465;
                             </a>

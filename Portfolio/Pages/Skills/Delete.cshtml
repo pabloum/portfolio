@@ -1,0 +1,17 @@
+﻿@page
+@model Portfolio.Pages.Skills.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Skill</h1>
+
+<div class="alert alert-danger">
+    Are you sure you want to delete @Model.Skill.Name ?
+</div>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Yes!</button>
+    <a asp-page="/index" class="btn btn-info">Cancel</a>
+</form>
+

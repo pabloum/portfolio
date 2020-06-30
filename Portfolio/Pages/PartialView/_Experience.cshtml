@@ -4,7 +4,7 @@
 @model List<Experience>
 
 
-    <div class="experience">
+    <div id="experience">
         @{string @title = "Experience"; }
         <partial name="_SectionTitle" model="title" />
 
@@ -22,17 +22,17 @@
                                     </div>
                                     <div class="ml-auto">
                                         <a class="btn btn-lg"
-                                           asp-page="Experience/Detail"
+                                           asp-page="Experiences/Detail"
                                            asp-route-experienceId="@job.Id">
                                             &#128270;
                                         </a>
                                         <a class="btn btn-lg"
-                                           asp-page="Experience/Edit"
+                                           asp-page="Experiences/Edit"
                                            asp-route-experienceId="@job.Id">
                                             &#x270D;
                                         </a>
                                         <a class="btn btn-lg"
-                                           asp-page="Experience/Delete"
+                                           asp-page="Experiences/Delete"
                                            asp-route-experienceId="@job.Id">
                                             &#128465;
                                         </a>

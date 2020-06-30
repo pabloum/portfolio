@@ -42,8 +42,9 @@ namespace Portfolio.Data.InMemory
 
             if (result != null)
             {
-                // TODO Update all. I'm not sure if this solution works
-                result = skill;
+                result.Name = skill.Name;
+                result.Percentage = skill.Percentage;
+                result.Category = skill.Category;
             }
         }
 

@@ -12,11 +12,6 @@
     <ProjectReference Include="..\Portfolio.Data\Portfolio.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Projects\" />
-    <Folder Include="Pages\Skills\" />
-  </ItemGroup>
-
 
 
 </Project>

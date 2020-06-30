@@ -3,7 +3,7 @@
 
 @model List<Skill>
 
-    <div class="profile">
+    <div id="skills">
         @{string @title = "Skills"; }
         <partial name="_SectionTitle" model="title" />
 
@@ -18,6 +18,9 @@
             <div>
                 Category: @skill.Category
             </div>
+
+            <span><a asp-page="Skills/Delete" asp-route-skillId="@skill.Id" class="btn btn-danger">&#128465;</a></span>
+
             <hr />
         }
 
