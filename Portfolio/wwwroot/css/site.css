@@ -95,3 +95,7 @@ body {
 .card {
     margin: 20px;;
 }
+
+.progress-bar {
+    background-color: black;
+}
