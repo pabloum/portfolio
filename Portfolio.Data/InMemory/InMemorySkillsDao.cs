@@ -28,6 +28,7 @@ namespace Portfolio.Data.InMemory
 
         public void Create(Skill skill)
         {
+            skill.Id = Skills.Max(s => s.Id) + 1;
             Skills.Add(skill);
         }
 

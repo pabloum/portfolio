@@ -25,6 +25,7 @@ namespace Portfolio.Data.InMemory
 
         public void Create(Education education)
         {
+            education.Id = Education.Max(e => e.Id) + 1;
             Education.Add(education);
         }
 

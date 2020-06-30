@@ -4,7 +4,7 @@
 
     <div id="education">
 
-        @{string @title = "Education"; }
+        @{string @title = "Educations"; }
         <partial name="_SectionTitle" model="title" />
 
         <div class="container">
@@ -27,17 +27,17 @@
                     <div class="col">
                         <div class="float-right">
                             <a class="btn btn-lg"
-                               asp-page="EducationSection/Detail"
+                               asp-page="Educations/Detail"
                                asp-route-educationId="@study.Id">
                                 &#128270;
                             </a>
                             <a class="btn btn-lg"
-                               asp-page="EducationSection/Edit"
+                               asp-page="Educations/Edit"
                                asp-route-educationId="@study.Id">
                                 &#x270D;
                             </a>
                             <a class="btn btn-lg"
-                               asp-page="EducationSection/Delete"
+                               asp-page="Educations/Delete"
                                asp-route-educationId="@study.Id">
                                 &#128465;
                             </a>

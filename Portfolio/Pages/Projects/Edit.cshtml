@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{projectId:int?}"
 @model Portfolio.Pages.Projects.EditModel
 @{
     ViewData["Title"] = "Edit";
@@ -8,7 +8,25 @@
 
 <form method="post">
 
+    <input type="hidden" asp-for="@Model.Project.Id" />
 
+    <div class="form-group">
+        <label asp-for="@Model.Project.ProjectName"></label>
+        <input asp-for="@Model.Project.ProjectName" class="form-control" />
+        <span class="text-danger" asp-validation-for="@Model.Project.ProjectName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Project.Description"></label>
+        <input asp-for="@Model.Project.Description" class="form-control" />
+        <span class="text-danger" asp-validation-for="@Model.Project.Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Project.Technologies"></label>
+        <input asp-for="@Model.Project.Technologies" class="form-control" />
+        <span class="text-danger" asp-validation-for="@Model.Project.Technologies"></span>
+    </div>
 
     <button type="submit" class="btn btn-dark">Submit</button>
 </form>

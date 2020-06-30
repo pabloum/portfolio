@@ -22,6 +22,7 @@ namespace Portfolio.Data.InMemory
         }
         public void Create(Project project)
         {
+            project.Id = Projects.Max(p => p.Id) + 1;
             Projects.Add(project);
         }
 

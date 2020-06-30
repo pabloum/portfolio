@@ -1,8 +1,17 @@
-﻿@page
+﻿@page "{projectId:int}"
 @model Portfolio.Pages.Projects.DetailModel
 @{
     ViewData["Title"] = "Detail";
 }
 
-<h1>Detail</h1>
+<h1>Details for @Model.Project.ProjectName</h1>
 
+<h2>@Model.Project.ProjectName</h2>
+
+<h3>Description</h3>
+
+<p>@Model.Project.Description</p>
+
+<h3>Technologies used:</h3>
+
+<p>@Model.Project.Technologies</p>

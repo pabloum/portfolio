@@ -25,6 +25,7 @@ namespace Portfolio.Data.InMemory
 
         public void Create(Experience experience)
         {
+            experience.Id = Experience.Max(e => e.Id) + 1;
             Experience.Add(experience);
         }
 
