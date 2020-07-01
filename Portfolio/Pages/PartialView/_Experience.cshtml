@@ -1,5 +1,6 @@
 ﻿
 @using Portfolio.Core
+@using System.Globalization
 
 @model List<Experience>
 
@@ -54,7 +55,7 @@
                                 </table>
                             </div>
                             <div class="card-footer">
-                                <small>TO-DO Dates</small>
+                                <small>@job.DateBegining.ToString("MMMM", CultureInfo.InvariantCulture) @job.DateBegining.Year - @job.DateEnd.ToString("MMMM", CultureInfo.InvariantCulture) @job.DateEnd.Year  (@job.GetYearsExperience() years)</small>
                             </div>
 
                         </div>

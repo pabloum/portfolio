@@ -14,15 +14,22 @@
             <div class="row justify-content-center align-self-center">
                 <div class="col">
                     <div>
+                        <b>Title:</b>
                         @study.Title
                     </div>
 
-                    <small>
-                        @study.DateBegining.ToString("MMMM", CultureInfo.InvariantCulture) @study.DateBegining.Year - @study.DateEnd.ToString("MMMM", CultureInfo.InvariantCulture) @study.DateEnd.Year
-                    </small>
 
                     <div>
+                        <b>Institution</b>
                         @study.University
+                        <small>
+                            (@study.DateBegining.ToString("MMMM", CultureInfo.InvariantCulture) @study.DateBegining.Year - @study.DateEnd.ToString("MMMM", CultureInfo.InvariantCulture) @study.DateEnd.Year)
+                        </small>
+                    </div>
+
+                    <div>
+                        <b>Description:</b>
+                        @study.Description
                     </div>
                 </div>
                 <div class="col">

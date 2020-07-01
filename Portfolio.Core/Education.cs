@@ -11,5 +11,6 @@ namespace Portfolio.Core
         public string Title { get; set; }
         public DateTime DateBegining { get; set; }
         public DateTime DateEnd { get; set; }
+        public string Description { get; set; }
     }
 }
