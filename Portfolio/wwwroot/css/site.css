@@ -123,3 +123,7 @@ div.skill-type {
 .edit-skills {
     float: right;
 }
+
+.btn-gray {
+    background-color:cadetblue;
+}

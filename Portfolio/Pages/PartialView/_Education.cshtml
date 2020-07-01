@@ -1,53 +1,54 @@
-﻿@using Portfolio.Core
+﻿@using Portfolio.Core;
+@using System.Globalization;
 
 @model List<Education>
 
-    <div id="education">
+<div id="education">
 
-        @{string @title = "Educations"; }
-        <partial name="_SectionTitle" model="title" />
+    @{string @title = "Educations"; }
+    <partial name="_SectionTitle" model="title" />
 
-        <div class="container">
-            @foreach (var study in Model)
-            {
-                <div class="row justify-content-center align-self-center">
-                    <div class="col">
-                        <div>
-                            @study.Title
-                        </div>
-
-                        <small>
-                            @study.DateBegining - @study.DateEnd
-                        </small>
-
-                        <div>
-                            @study.University
-                        </div>
+    <div class="container">
+        @foreach (var study in Model)
+        {
+            <div class="row justify-content-center align-self-center">
+                <div class="col">
+                    <div>
+                        @study.Title
                     </div>
-                    <div class="col">
-                        <div class="float-right">
-                            <a class="btn btn-lg"
-                               asp-page="Educations/Detail"
-                               asp-route-educationId="@study.Id">
-                                &#128270;
-                            </a>
-                            <a class="btn btn-lg"
-                               asp-page="Educations/Edit"
-                               asp-route-educationId="@study.Id">
-                                &#x270D;
-                            </a>
-                            <a class="btn btn-lg"
-                               asp-page="Educations/Delete"
-                               asp-route-educationId="@study.Id">
-                                &#128465;
-                            </a>
-                        </div>
+
+                    <small>
+                        @study.DateBegining.ToString("MMMM", CultureInfo.InvariantCulture) @study.DateBegining.Year - @study.DateEnd.ToString("MMMM", CultureInfo.InvariantCulture) @study.DateEnd.Year
+                    </small>
+
+                    <div>
+                        @study.University
                     </div>
                 </div>
-                <hr />
-                <br />
-            }
-        </div>
-
-
+                <div class="col">
+                    <div class="float-right">
+                        <a class="btn btn-lg"
+                           asp-page="Educations/Detail"
+                           asp-route-educationId="@study.Id">
+                            &#128270;
+                        </a>
+                        <a class="btn btn-lg"
+                           asp-page="Educations/Edit"
+                           asp-route-educationId="@study.Id">
+                            &#x270D;
+                        </a>
+                        <a class="btn btn-lg"
+                           asp-page="Educations/Delete"
+                           asp-route-educationId="@study.Id">
+                            &#128465;
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <br />
+        }
     </div>
+
+
+</div>
