@@ -14,15 +14,17 @@ namespace Portfolio.Data.InMemory
         {
             Skills = new List<Skill>
             {
-                new Skill { Id = 1, Name = "C/C++",         Percentage = 70, Category = "Programming languages" },
-                new Skill { Id = 2, Name = "C#",            Percentage = 70, Category = "Programming languages" },
-                new Skill { Id = 3, Name = "Ruby",          Percentage = 70, Category = "Programming languages" },
-                new Skill { Id = 4, Name = ".Net Core",     Percentage = 70, Category = "Web Framework" },
-                new Skill { Id = 5, Name = "Ruby on Rails", Percentage = 50, Category = "Web Framework" },
-                new Skill { Id = 6, Name = "English",       Percentage = 90, Category = "Language" },
-                new Skill { Id = 7, Name = "French",        Percentage = 78, Category = "Language" },
-                new Skill { Id = 8, Name = "German",        Percentage = 60, Category = "Language" },
-                new Skill { Id = 9, Name = "Spanish",       Percentage = 99, Category = "Language" }
+                new Skill { Id = 1, Name = "C/C++",         Percentage = 70, Category = SkillType.Technical },
+                new Skill { Id = 2, Name = "C#",            Percentage = 70, Category = SkillType.Technical },
+                new Skill { Id = 3, Name = "Ruby",          Percentage = 70, Category = SkillType.Technical },
+                new Skill { Id = 4, Name = ".Net Core",     Percentage = 70, Category = SkillType.Technical },
+                new Skill { Id = 5, Name = "Ruby on Rails", Percentage = 50, Category = SkillType.Technical },
+                new Skill { Id = 6, Name = "English",       Percentage = 90, Category = SkillType.Language },
+                new Skill { Id = 7, Name = "French",        Percentage = 78, Category = SkillType.Language },
+                new Skill { Id = 8, Name = "German",        Percentage = 60, Category = SkillType.Language },
+                new Skill { Id = 9, Name = "Spanish",       Percentage = 99, Category = SkillType.Language },
+                new Skill { Id = 10, Name = "Responsible",  Percentage = 99, Category = SkillType.Soft },
+                new Skill { Id = 11, Name = "Disciplined",  Percentage = 99, Category = SkillType.Soft },
             };
         }
 

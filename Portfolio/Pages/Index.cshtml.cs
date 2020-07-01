@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Portfolio.Core;
 using Portfolio.Data;
@@ -14,17 +15,22 @@ namespace Portfolio.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly IPablosData PablosData;
+        private readonly IHtmlHelper htmlHelper;
 
         public PersonalInformation Information { get; set; }
         public List<Education> Education { get; set; }
         public List<Experience> Experience { get; set; }
         public List<Skill> Skills { get; set; }
         public List<Project> Portafolio { get; set; }
+        public IEnumerable<SelectListItem> SkillTypes { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IPablosData pablosData)
+        public IndexModel(ILogger<IndexModel> logger, IPablosData pablosData, IHtmlHelper htmlHelper)
         {
             _logger = logger;
             this.PablosData = pablosData;
+            this.htmlHelper = htmlHelper;
+
+            SkillTypes = htmlHelper.GetEnumSelectList<SkillType>();
         }
 
         public void OnGet()

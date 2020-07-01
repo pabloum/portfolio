@@ -24,7 +24,8 @@
 
     <div class="form-group">
         <label asp-for="Skill.Category"></label>
-        <input asp-for="Skill.Category" class="form-control"/>
+        <select class="form-control" asp-for="Skill.Category" asp-items="Model.SkillTypes">
+        </select>
         <span class="text-danger" asp-validation-for="Skill.Category"></span>
     </div>
 

@@ -99,3 +99,27 @@ body {
 .progress-bar {
     background-color: black;
 }
+
+h4.skill-type {
+    text-align: center;
+    margin-top: 15px;
+}
+
+hr.skill-type {
+    border: 2px solid;
+}
+
+div.skill-type {
+    width: inherit;
+    margin: 5px;
+    clear: both;
+    display: table;
+}
+
+.skill-title {
+    float: left;
+}
+
+.edit-skills {
+    float: right;
+}
