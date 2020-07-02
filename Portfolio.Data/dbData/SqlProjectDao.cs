@@ -1,4 +1,5 @@
-﻿using Portfolio.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,29 +20,33 @@ namespace Portfolio.Data.dbData
             return db.SaveChanges();
         }
 
-        public void Create(Project entity)
+        public void Create(Project project)
         {
-            throw new NotImplementedException();
+            db.Projects.Add(project);
         }
 
-        public void Delete(Project entity)
+        public void Delete(Project project)
         {
-            throw new NotImplementedException();
+            if (project != null)
+            {
+                db.Projects.Remove(project);
+            }
         }
 
         public IEnumerable<Project> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Projects;
         }
 
         public Project Read(int id)
         {
-            throw new NotImplementedException();
+            return db.Projects.Find(id);
         }
 
-        public void Update(Project entity)
+        public void Update(Project project)
         {
-            throw new NotImplementedException();
+            var entity = db.Projects.Attach(project);
+            entity.State = EntityState.Modified;
         }
     }
 }

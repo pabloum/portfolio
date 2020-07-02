@@ -1,6 +1,8 @@
-﻿using Portfolio.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Core;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Portfolio.Data.dbData
@@ -19,29 +21,35 @@ namespace Portfolio.Data.dbData
             return db.SaveChanges();
         }
 
-        public void Create(Experience entity)
+        public void Create(Experience experience)
         {
-            throw new NotImplementedException();
+            db.Experience.Add(experience);
         }
 
-        public void Delete(Experience entity)
+        public void Delete(Experience experience)
         {
-            throw new NotImplementedException();
+            if (experience != null)
+            {
+                db.Experience.Remove(experience);
+            }
         }
 
         public IEnumerable<Experience> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Experience;
         }
 
         public Experience Read(int id)
         {
-            throw new NotImplementedException();
+            //var experience = db.Experience.Where(r => r.Id == id).SingleOrDefault();
+            var experience =  db.Experience.Find(id);
+            return experience;
         }
 
-        public void Update(Experience entity)
+        public void Update(Experience experience)
         {
-            throw new NotImplementedException();
+            var entity = db.Experience.Attach(experience);
+            entity.State = EntityState.Modified;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Portfolio.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,29 +20,33 @@ namespace Portfolio.Data.dbData
             return db.SaveChanges();
         }
 
-        public void Create(Skill entity)
+        public void Create(Skill skill)
         {
-            throw new NotImplementedException();
+            db.Skills.Add(skill);
         }
 
-        public void Delete(Skill entity)
+        public void Delete(Skill skill)
         {
-            throw new NotImplementedException();
+            if (skill != null)
+            {
+                db.Skills.Remove(skill);
+            }
         }
 
         public IEnumerable<Skill> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Skills;
         }
 
         public Skill Read(int id)
         {
-            throw new NotImplementedException();
+            return db.Skills.Find(id);
         }
 
-        public void Update(Skill entity)
+        public void Update(Skill skill)
         {
-            throw new NotImplementedException();
+            var entity = db.Skills.Attach(skill);
+            entity.State = EntityState.Modified;
         }
     }
 }
