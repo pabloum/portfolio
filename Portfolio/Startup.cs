@@ -33,6 +33,7 @@ namespace Portfolio
             });
 
             services.AddSingleton<IPablosData, InMemoryInformation>();
+
             AddInMemoryDaos(services);  // Uncomment this to work wiht In Memory data
             //AddSqlDaos(services);     // Uncomment this for working with data in SQL Server
 
@@ -40,7 +41,10 @@ namespace Portfolio
         }
         public void AddSqlDaos(IServiceCollection services)
         {
-
+            services.AddScoped<IRepository<Education>, SqlEducationDao>();
+            services.AddScoped<IRepository<Experience>, SqlExperienceDao>();
+            services.AddScoped<IRepository<Project>, SqlProjectDao>();
+            services.AddScoped<IRepository<Skill>, SqlSkillsDao>();
         }
 
         public void AddInMemoryDaos(IServiceCollection services)
