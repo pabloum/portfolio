@@ -6,9 +6,9 @@ namespace Portfolio.Core
 {
     public class Experience
     {
-        public float GetYearsExperience()
+        public decimal GetYearsExperience()
         {
-            YearsExperience = (float)Math.Round(((DateEnd - DateBegining).Days / 365.0f) * 100f) / 100f;
+            YearsExperience = (decimal)Math.Round(((DateEnd - DateBegining).Days / 365.0) * 100) / 100;
             return YearsExperience;
         }
 
@@ -19,6 +19,6 @@ namespace Portfolio.Core
         public string Technologies { get; set; }
         public DateTime DateBegining { get; set; }
         public DateTime DateEnd { get; set; }
-        public float YearsExperience { get; set; }
+        public decimal YearsExperience { get; set; }
     }
 }

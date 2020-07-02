@@ -32,15 +32,15 @@ namespace Portfolio
                 options.UseSqlServer(Configuration.GetConnectionString("PortfolioDb"));
             });
 
-            services.AddSingleton<IPablosData, InMemoryInformation>();
-
-            AddInMemoryDaos(services);  // Uncomment this to work wiht In Memory data
-            //AddSqlDaos(services);     // Uncomment this for working with data in SQL Server
+            //AddInMemoryDaos(services);  // Uncomment this to work wiht In Memory data
+            AddSqlDaos(services);     // Uncomment this for working with data in SQL Server
 
             services.AddRazorPages();
         }
         public void AddSqlDaos(IServiceCollection services)
         {
+            services.AddScoped<IPablosData, InMemoryInformation>();
+
             services.AddScoped<IRepository<Education>, SqlEducationDao>();
             services.AddScoped<IRepository<Experience>, SqlExperienceDao>();
             services.AddScoped<IRepository<Project>, SqlProjectDao>();
@@ -49,6 +49,8 @@ namespace Portfolio
 
         public void AddInMemoryDaos(IServiceCollection services)
         {
+            services.AddSingleton<IPablosData, InMemoryInformation>();
+
             services.AddSingleton<IRepository<Education>, InMemoryEducationDao>();
             services.AddSingleton<IRepository<Experience>, InMemoryExperienceDao>();
             services.AddSingleton<IRepository<Project>, InMemoryProjectDao>();

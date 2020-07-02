@@ -18,10 +18,10 @@ namespace Portfolio.Pages
         private readonly IHtmlHelper htmlHelper;
 
         public PersonalInformation Information { get; set; }
-        public List<Education> Education { get; set; }
-        public List<Experience> Experience { get; set; }
-        public List<Skill> Skills { get; set; }
-        public List<Project> Portafolio { get; set; }
+        public IEnumerable<Education> Education { get; set; }
+        public IEnumerable<Experience> Experience { get; set; }
+        public IEnumerable<Skill> Skills { get; set; }
+        public IEnumerable<Project> Portafolio { get; set; }
         public IEnumerable<SelectListItem> SkillTypes { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IPablosData pablosData, IHtmlHelper htmlHelper)

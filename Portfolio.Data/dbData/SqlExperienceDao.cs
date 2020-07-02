@@ -23,6 +23,7 @@ namespace Portfolio.Data.dbData
 
         public void Create(Experience experience)
         {
+            experience.Id = db.Experience.Max(e => e.Id) + 1;
             db.Experience.Add(experience);
         }
 

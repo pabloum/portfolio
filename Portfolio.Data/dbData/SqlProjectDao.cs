@@ -2,6 +2,7 @@
 using Portfolio.Core;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Portfolio.Data.dbData
@@ -22,6 +23,7 @@ namespace Portfolio.Data.dbData
 
         public void Create(Project project)
         {
+            project.Id = db.Projects.Max(p => p.Id) + 1;
             db.Projects.Add(project);
         }
 

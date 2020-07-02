@@ -12,10 +12,10 @@ namespace Portfolio.Data.InMemory
         private readonly IRepository<Project> _projectDao;
 
         public PersonalInformation Information { get; set; }
-        public List<Education> Education { get; set; }
-        public List<Experience> Experience { get; set; }
-        public List<Project> Projects { get; set; }
-        public List<Skill> Skills { get; set; }
+        public IEnumerable<Education> Education { get; set; }
+        public IEnumerable<Experience> Experience { get; set; }
+        public IEnumerable<Project> Projects { get; set; }
+        public IEnumerable<Skill> Skills { get; set; }
 
         public InMemoryInformation(IRepository<Education> educationDao, IRepository<Experience> experienceDao, 
                                    IRepository<Skill> skillsDao, IRepository<Project> projectDao)
@@ -37,13 +37,13 @@ namespace Portfolio.Data.InMemory
                 NaturalLanguages = new List<string> { "Spanish (native)", "English (C1)", "French (C1)", "German (B1)" }
             };
 
-            Education = (List<Education>)_educationDao.GetAll();
+            Education = _educationDao.GetAll();
 
-            Experience = (List<Experience>)_experienceDao.GetAll();
+            Experience = _experienceDao.GetAll();
 
-            Skills = (List<Skill>)_skillsDao.GetAll();
+            Skills = _skillsDao.GetAll();
 
-            Projects = (List<Project>)_projectDao.GetAll();
+            Projects = _projectDao.GetAll();
         }
 
         public PersonalInformation GetInformation()
@@ -51,27 +51,27 @@ namespace Portfolio.Data.InMemory
             return Information;
         }
 
-        public List<Education> GetEducation()
+        public IEnumerable<Education> GetEducation()
         {
-            Education = (List<Education>)_educationDao.GetAll();
+            Education = _educationDao.GetAll();
             return Education;
         }
 
-        public List<Experience> GetExperience()
+        public IEnumerable<Experience> GetExperience()
         {
-            Experience = (List<Experience>)_experienceDao.GetAll();
+            Experience = _experienceDao.GetAll();
             return Experience;
         }
 
-        public List<Project> GetPortafolio()
+        public IEnumerable<Project> GetPortafolio()
         {
-            Projects = (List<Project>)_projectDao.GetAll();
+            Projects = _projectDao.GetAll();
             return Projects;
         }
 
-        public List<Skill> GetSkills()
+        public IEnumerable<Skill> GetSkills()
         {
-            Skills = (List<Skill>)_skillsDao.GetAll();
+            Skills = _skillsDao.GetAll();
             return Skills;
         }
     }
