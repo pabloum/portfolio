@@ -49,6 +49,7 @@ namespace Portfolio.Data.InMemory
                 record.Title = education.Title;
                 record.DateBegining = education.DateBegining;
                 record.DateEnd = education.DateEnd;
+                record.Description = education.Description;
             }
         }
 

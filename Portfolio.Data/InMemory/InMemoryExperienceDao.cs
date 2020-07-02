@@ -49,6 +49,8 @@ namespace Portfolio.Data.InMemory
                 record.Company = experience.Company;
                 record.MainFunctions = experience.MainFunctions;
                 record.Position = experience.Position;
+                record.DateBegining = experience.DateBegining;
+                record.DateEnd = experience.DateEnd;
             }
         }
 
