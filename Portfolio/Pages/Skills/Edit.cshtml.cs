@@ -61,7 +61,7 @@ namespace Portfolio.Pages.Skills
                     skillDao.Create(Skill);
                 }
 
-                //pablosData.Commit();
+                skillDao.Commit();
 
                 return RedirectToPage("/index");
             }

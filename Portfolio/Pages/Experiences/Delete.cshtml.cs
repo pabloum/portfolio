@@ -36,7 +36,7 @@ namespace Portfolio
             var experience = experienceDao.Read(experienceId);
 
             experienceDao.Delete(experience);
-            //restaurantData.Commit();
+            experienceDao.Commit();
 
             if (experience == null)
             {

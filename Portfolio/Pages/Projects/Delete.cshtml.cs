@@ -37,7 +37,7 @@ namespace Portfolio.Pages.Projects
             var project = projectDao.Read(projectId);
 
             projectDao.Delete(project);
-            //projectDao.Commit();
+            projectDao.Commit();
 
             if (project == null)
             {

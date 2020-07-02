@@ -18,6 +18,12 @@ namespace Portfolio.Data.InMemory
                 new Experience {Id = 3, Company = "Renault - Sofasa", MainFunctions = "Ni mierda", Position = "Production Intern", Technologies = "Excel", DateBegining = new DateTime(2017,1,10), DateEnd = new DateTime(2017,7,7)}
             };
         }
+
+        public int Commit()
+        {
+            return 0;
+        }
+
         public IEnumerable<Experience> GetAll()
         {
             return Experience;

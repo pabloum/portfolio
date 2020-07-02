@@ -20,6 +20,11 @@ namespace Portfolio.Data.InMemory
                 new Project { Id = 5, ProjectName = "Vigenere Cypher",  Description = "OMG", Technologies = "HTML, JS, CSS" },
             };
         }
+        public int Commit()
+        {
+            return 0;
+        }
+
         public void Create(Project project)
         {
             project.Id = Projects.Max(p => p.Id) + 1;

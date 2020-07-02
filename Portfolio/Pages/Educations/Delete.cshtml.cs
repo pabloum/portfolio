@@ -35,7 +35,7 @@ namespace Portfolio
         {
             var education = educationDao.Read(educationId);
             educationDao.Delete(education);
-            //educationDao.Commit();
+            educationDao.Commit();
 
             if (education == null)
             {

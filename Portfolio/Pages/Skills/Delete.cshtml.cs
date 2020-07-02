@@ -36,7 +36,7 @@ namespace Portfolio.Pages.Skills
             var skill = skillDao.Read(skillId);
 
             skillDao.Delete(skill);
-            //skillDao.Commit();
+            skillDao.Commit();
 
             if (skill == null)
             {

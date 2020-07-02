@@ -55,7 +55,7 @@ namespace Portfolio.Pages.Projects
                     projectDao.Create(Project);
                 }
 
-                //projectDao.Commit();
+                projectDao.Commit();
 
                 return RedirectToPage("/index");
             }

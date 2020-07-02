@@ -11,5 +11,6 @@ namespace Portfolio.Data
         T Read(int id);
         void Update(T entity);
         void Delete(T entity);
+        int Commit();
     }
 }

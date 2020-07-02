@@ -23,6 +23,11 @@ namespace Portfolio.Data.InMemory
             return Education;
         }
 
+        public int Commit()
+        {
+            return 0;
+        }
+
         public void Create(Education education)
         {
             education.Id = Education.Max(e => e.Id) + 1;

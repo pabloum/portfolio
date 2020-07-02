@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Portfolio.Core;
 using Portfolio.Data;
+using Portfolio.Data.dbData;
 using Portfolio.Data.InMemory;
 
 namespace Portfolio
@@ -26,14 +28,28 @@ namespace Portfolio
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<PortfolioDbContext>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("PortfolioDb"));
+            });
+
             services.AddSingleton<IPablosData, InMemoryInformation>();
+            AddInMemoryDaos(services);  // Uncomment this to work wiht In Memory data
+            //AddSqlDaos(services);     // Uncomment this for working with data in SQL Server
+
+            services.AddRazorPages();
+        }
+        public void AddSqlDaos(IServiceCollection services)
+        {
+
+        }
+
+        public void AddInMemoryDaos(IServiceCollection services)
+        {
             services.AddSingleton<IRepository<Education>, InMemoryEducationDao>();
             services.AddSingleton<IRepository<Experience>, InMemoryExperienceDao>();
             services.AddSingleton<IRepository<Project>, InMemoryProjectDao>();
             services.AddSingleton<IRepository<Skill>, InMemorySkillsDao>();
-            services.AddRazorPages();
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

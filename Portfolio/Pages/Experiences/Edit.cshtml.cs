@@ -54,7 +54,7 @@ namespace Portfolio
                     experienceDao.Create(Experience);
                 }
 
-                //pablosData.Commit();
+                experienceDao.Commit();
 
                 return RedirectToPage("/index");
             }

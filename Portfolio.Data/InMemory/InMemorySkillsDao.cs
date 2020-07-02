@@ -60,5 +60,10 @@ namespace Portfolio.Data.InMemory
         {
             return Skills;
         }
+
+        public int Commit()
+        {
+            return 0;
+        }
     }
 }

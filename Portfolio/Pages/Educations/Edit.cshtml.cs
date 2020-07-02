@@ -54,7 +54,7 @@ namespace Portfolio
                     educationDao.Create(Education);
                 }
 
-                //pablosData.Commit();
+                educationDao.Commit();
 
                 return RedirectToPage("/index");
             }
