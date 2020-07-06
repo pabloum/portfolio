@@ -46,6 +46,10 @@ namespace Portfolio.Data.InMemory
             Projects = _projectDao.GetAll();
         }
 
+        /// <summary>
+        /// Get the personal Information
+        /// </summary>
+        /// <returns></returns>
         public PersonalInformation GetInformation()
         {
             return Information;

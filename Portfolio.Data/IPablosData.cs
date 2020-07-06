@@ -3,12 +3,39 @@ using System.Collections.Generic;
 
 namespace Portfolio.Data
 {
+    /// <summary>
+    /// <see cref=""/>
+    /// </summary>
     public interface IPablosData
     {
+        /// <summary>
+        /// Get personal information
+        /// </summary>
+        /// <returns></returns>
         PersonalInformation GetInformation();
+
+        /// <summary>
+        /// Returns the Education 
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<Education> GetEducation();
+
+        /// <summary>
+        /// Returns all the different jobs where the user has worked in.
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<Experience> GetExperience();
+
+        /// <summary>
+        /// Returns all the Projects the user has worked on
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<Project> GetPortafolio();
+
+        /// <summary>
+        /// Returns all the skills that the user has
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<Skill> GetSkills();
     }
 }
