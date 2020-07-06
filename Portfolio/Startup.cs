@@ -39,7 +39,7 @@ namespace Portfolio
         }
         public void AddSqlDaos(IServiceCollection services)
         {
-            services.AddScoped<IPablosData, InMemoryInformation>();
+            services.AddScoped<IPablosData, PablosData>();
 
             services.AddScoped<IRepository<Education>, SqlEducationDao>();
             services.AddScoped<IRepository<Experience>, SqlExperienceDao>();
@@ -49,7 +49,7 @@ namespace Portfolio
 
         public void AddInMemoryDaos(IServiceCollection services)
         {
-            services.AddSingleton<IPablosData, InMemoryInformation>();
+            services.AddSingleton<IPablosData, PablosData>();
 
             services.AddSingleton<IRepository<Education>, InMemoryEducationDao>();
             services.AddSingleton<IRepository<Experience>, InMemoryExperienceDao>();

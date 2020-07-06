@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Portfolio.Core;
 
-namespace Portfolio.Data.InMemory
+namespace Portfolio.Data
 {
-    public class InMemoryInformation : IPablosData
+    public class PablosData : IPablosData
     {
         private readonly IRepository<Education> _educationDao;
         private readonly IRepository<Experience> _experienceDao;
@@ -17,7 +17,7 @@ namespace Portfolio.Data.InMemory
         public IEnumerable<Project> Projects { get; set; }
         public IEnumerable<Skill> Skills { get; set; }
 
-        public InMemoryInformation(IRepository<Education> educationDao, IRepository<Experience> experienceDao, 
+        public PablosData(IRepository<Education> educationDao, IRepository<Experience> experienceDao, 
                                    IRepository<Skill> skillsDao, IRepository<Project> projectDao)
         {
             _educationDao = educationDao;
