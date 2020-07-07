@@ -17,14 +17,19 @@
     </div>
 
     <div class="form-group">
+        <label asp-for="Experience.Position"></label>
+        <input asp-for="Experience.Position" class="form-control" />
+    </div>
+
+    <div class="form-group">
         <label asp-for="Experience.MainFunctions"></label>
         <input asp-for="Experience.MainFunctions" class="form-control" />
         <span class="text-danger" asp-validation-for="Experience.MainFunctions"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Experience.Position"></label>
-        <input asp-for="Experience.Position" class="form-control" />
+        <label asp-for="Experience.Technologies"></label>
+        <input asp-for="Experience.Technologies" class="form-control" />
     </div>
 
     <div class="form-group">
