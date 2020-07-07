@@ -1,4 +1,5 @@
 ﻿using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using System.Collections.Generic;
 
 namespace Portfolio.Data
@@ -24,7 +25,7 @@ namespace Portfolio.Data
         /// Returns all the different jobs where the user has worked in.
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Experience> GetExperience();
+        IEnumerable<ExperienceDto> GetExperience();
 
         /// <summary>
         /// Returns all the Projects the user has worked on

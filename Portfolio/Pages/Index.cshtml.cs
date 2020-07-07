@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio.Pages
@@ -19,7 +20,7 @@ namespace Portfolio.Pages
 
         public PersonalInformation Information { get; set; }
         public IEnumerable<Education> Education { get; set; }
-        public IEnumerable<Experience> Experience { get; set; }
+        public IEnumerable<ExperienceDto> Experience { get; set; }
         public IEnumerable<Skill> Skills { get; set; }
         public IEnumerable<Project> Portafolio { get; set; }
         public IEnumerable<SelectListItem> SkillTypes { get; set; }

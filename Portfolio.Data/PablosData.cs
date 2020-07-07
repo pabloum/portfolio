@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Portfolio.Core;
+using Portfolio.Core.DTOs;
 
 namespace Portfolio.Data
 {
@@ -13,7 +15,7 @@ namespace Portfolio.Data
 
         public PersonalInformation Information { get; set; }
         public IEnumerable<Education> Education { get; set; }
-        public IEnumerable<Experience> Experience { get; set; }
+        public IEnumerable<ExperienceDto> Experience { get; set; }
         public IEnumerable<Project> Projects { get; set; }
         public IEnumerable<Skill> Skills { get; set; }
 
@@ -39,7 +41,7 @@ namespace Portfolio.Data
 
             Education = _educationDao.GetAll();
 
-            Experience = _experienceDao.GetAll();
+            Experience = GetExperience();
 
             Skills = _skillsDao.GetAll();
 
@@ -61,9 +63,20 @@ namespace Portfolio.Data
             return Education;
         }
 
-        public IEnumerable<Experience> GetExperience()
+        public IEnumerable<ExperienceDto> GetExperience()
         {
-            Experience = _experienceDao.GetAll();
+            Experience = _experienceDao.GetAll().Select(
+                e => new ExperienceDto { 
+                        Company = e.Company,
+                        Position = e.Position,
+                        MainFunctions = e.MainFunctions,
+                        Technologies = e.Technologies,
+                        DateBegining = e.DateBegining,
+                        DateEnd = e.DateEnd,
+                        YearsExperience = e.GetYearsExperience()
+                }
+            );
+
             return Experience;
         }
 
