@@ -16,6 +16,5 @@ namespace Portfolio.Data.dbData
         public DbSet<Education> Education{ get; set; }
         public DbSet<Project> Projects{ get; set; }
         public DbSet<Skill> Skills { get; set; }
-        //public DbSet<SkillType> SkillTypes { get; set; }
-}
+    }
 }
