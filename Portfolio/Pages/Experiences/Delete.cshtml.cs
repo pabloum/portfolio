@@ -4,24 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio
 {
     public class DeleteExperienceModel : PageModel
     {
-        private readonly IRepository<Experience> experienceDao;
+        private readonly IPablosData pablosData;
 
-        public Experience Experience { get; set; }
+        public ExperienceDto Experience { get; set; }
 
-        public DeleteExperienceModel(IRepository<Experience> experienceDao)
+        public DeleteExperienceModel(IPablosData pablosData)
         {
-            this.experienceDao = experienceDao;
+            this.pablosData = pablosData;
         }
         public IActionResult OnGet(int experienceId)
         {
-            Experience = experienceDao.Read(experienceId);
+            Experience = pablosData.GetExperienceById(experienceId);
 
             if (Experience == null)
             {
@@ -33,10 +33,9 @@ namespace Portfolio
 
         public IActionResult OnPost(int experienceId)
         {
-            var experience = experienceDao.Read(experienceId);
+            var experience = pablosData.GetExperienceById(experienceId);            
 
-            experienceDao.Delete(experience);
-            experienceDao.Commit();
+            pablosData.RemoveExperience(experienceId);
 
             if (experience == null)
             {

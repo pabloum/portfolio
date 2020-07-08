@@ -38,5 +38,17 @@ namespace Portfolio.Data
         /// </summary>
         /// <returns></returns>
         IEnumerable<Skill> GetSkills();
+
+        /// <summary>
+        /// Sets an experience
+        /// </summary>
+        /// <param name="experienceDto"></param>
+        /// <returns>Returns a message which describes if an experience was created or updated</returns>
+        string SetExperience(ExperienceDto experienceDto);
+
+        ExperienceDto GetExperienceById(int id);
+
+        void RemoveExperience(int id);
+
     }
 }
