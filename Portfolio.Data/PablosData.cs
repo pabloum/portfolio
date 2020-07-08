@@ -67,6 +67,7 @@ namespace Portfolio.Data
         {
             Experience = _experienceDao.GetAll().Select(
                 e => new ExperienceDto { 
+                        Id = e.Id,
                         Company = e.Company,
                         Position = e.Position,
                         MainFunctions = e.MainFunctions,
