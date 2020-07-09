@@ -4,32 +4,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio.Pages.Projects
 {
     public class EditModel : PageModel
     {
-        private readonly IRepository<Project> projectDao;
+        private readonly IPablosData pablosData;
 
         [BindProperty]
-        public Project Project { get; set; }
+        public ProjectDto Project { get; set; }
 
-        public EditModel(IRepository<Project> projectDao)
+        public EditModel(IPablosData pablosData)
         {
-            this.projectDao = projectDao;
+            this.pablosData = pablosData;
         }
 
         public IActionResult OnGet(int? projectId)
         {
             if (projectId.HasValue)
             {
-                Project = projectDao.Read(projectId.Value);
+                Project = pablosData.GetProjectById(projectId.Value);
             }
             else
             {
-                Project = new Project();
+                Project = new ProjectDto();
             }
 
             if (Project == null)
@@ -44,18 +44,7 @@ namespace Portfolio.Pages.Projects
         {
             if (ModelState.IsValid)
             {
-                if (Project.Id > 0)
-                {
-                    TempData["Message"] = "Project created!";
-                    projectDao.Update(Project);
-                }
-                else
-                {
-                    TempData["Message"] = "Project created!";
-                    projectDao.Create(Project);
-                }
-
-                projectDao.Commit();
+                TempData["Message"] = pablosData.SetProject(Project);
 
                 return RedirectToPage("/index");
             }

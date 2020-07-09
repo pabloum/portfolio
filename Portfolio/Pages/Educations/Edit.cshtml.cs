@@ -4,31 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio
 {
     public class EditEducationModel : PageModel
     {
-        private readonly IRepository<Education> educationDao;
+        private readonly IPablosData pablosData;
 
         [BindProperty]
-        public Education Education { get; set; }
+        public EducationDto Education { get; set; }
 
-        public EditEducationModel(IRepository<Education> educationDao)
+        public EditEducationModel(IPablosData pablosData)
         {
-            this.educationDao = educationDao;
+            this.pablosData = pablosData;
         }
         public IActionResult OnGet(int? educationId)
         {
             if (educationId.HasValue)
             {
-                Education = educationDao.Read(educationId.Value);
+                Education = pablosData.GetEducationById(educationId.Value);
             }
             else
             {
-                Education = new Education();
+                Education = new EducationDto();
             }
 
             if (Education == null)
@@ -43,18 +43,7 @@ namespace Portfolio
         {
             if (ModelState.IsValid)
             {
-                if (Education.Id > 0) 
-                {
-                    TempData["Message"] = "Study updated!";
-                    educationDao.Update(Education);
-                }
-                else
-                {
-                    TempData["Message"] = "Study created!";
-                    educationDao.Create(Education);
-                }
-
-                educationDao.Commit();
+                TempData["Message"] = pablosData.SetEducation(Education);
 
                 return RedirectToPage("/index");
             }

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Portfolio.Core.DTOs;
 using Portfolio.Core;
 using Portfolio.Data;
 
@@ -12,16 +11,16 @@ namespace Portfolio.Pages.Skills
 {
     public class EditModel : PageModel
     {
-        private readonly IRepository<Skill> skillDao;
+        private readonly IPablosData pablosData;
         private readonly IHtmlHelper htmlHelper;
 
         [BindProperty]
-        public Skill Skill { get; set; }
+        public SkillDto Skill { get; set; }
         public IEnumerable<SelectListItem> SkillTypes { get; set; }
 
-        public EditModel(IRepository<Skill> skillDao, IHtmlHelper htmlHelper)
+        public EditModel(IPablosData pablosData, IHtmlHelper htmlHelper)
         {
-            this.skillDao = skillDao;
+            this.pablosData = pablosData;
             this.htmlHelper = htmlHelper;
 
             SkillTypes = htmlHelper.GetEnumSelectList<SkillType>();
@@ -31,11 +30,11 @@ namespace Portfolio.Pages.Skills
         {
             if (skillId.HasValue)
             {
-                Skill = skillDao.Read(skillId.Value);
+                Skill = pablosData.GetSkillById(skillId.Value);
             }
             else
             {
-                Skill = new Skill();
+                Skill = new SkillDto();
             }
 
             if (Skill == null)
@@ -50,19 +49,7 @@ namespace Portfolio.Pages.Skills
         {
             if (ModelState.IsValid)
             {
-                if (Skill.Id > 0)
-                {
-                    TempData["Message"] = "Study updated!";
-                    skillDao.Update(Skill);
-                }
-                else
-                {
-                    TempData["Message"] = "Study created!";
-                    skillDao.Create(Skill);
-                }
-
-                skillDao.Commit();
-
+                pablosData.SetSkill(Skill);
                 return RedirectToPage("/index");
             }
 
