@@ -201,6 +201,17 @@ namespace Portfolio.Data
         #region Get by Id
 
         /// <summary>
+        /// This method returns an Education DTO from a given Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public EducationDto GetEducationById(int id)
+        {
+            var education = _educationDao.Read(id);
+            return education.ToDto();
+        }
+
+        /// <summary>
         /// This method returns an Experience DTO from a given Id
         /// </summary>
         /// <param name="id">Id of experience</param>
@@ -208,22 +219,43 @@ namespace Portfolio.Data
         public ExperienceDto GetExperienceById(int id)
         {
             var experience = _experienceDao.Read(id);
-
-            return new ExperienceDto
-            {
-                Id              = experience.Id,
-                Company         = experience.Company,
-                Position        = experience.Position,
-                MainFunctions   = experience.MainFunctions,
-                Technologies    = experience.Technologies,
-                DateBegining    = experience.DateBegining,
-                DateEnd         = experience.DateEnd,
-                YearsExperience = experience.GetYearsExperience()
-            };
+            return experience.ToDto();
         }
+
+        /// <summary>
+        /// This method returns an Project DTO from a given Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ProjectDto GetProjectById(int id)
+        {
+            return _projectDao.Read(id).ToDto();
+        }
+
+        /// <summary>
+        /// This method returns an Skill DTO from a given Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public SkillDto GetSkillById(int id)
+        {
+            return _skillsDao.Read(id).ToDto();
+        }
+
         #endregion // Get by Id
 
         #region Remove
+
+        /// <summary>
+        /// This method removes an education from the Database
+        /// </summary>
+        /// <param name="id">Id of the education to be deleted</param>
+        public void RemoveEducation(int id)
+        {
+            var education = _educationDao.Read(id);
+            _educationDao.Delete(education);
+            _educationDao.Commit();
+        }
 
         /// <summary>
         /// This method removes an experience from the Database
@@ -234,6 +266,28 @@ namespace Portfolio.Data
             var experience = _experienceDao.Read(id);
             _experienceDao.Delete(experience);
             _experienceDao.Commit();
+        }
+
+        /// <summary>
+        /// This method removes a project from the Database
+        /// </summary>
+        /// <param name="id">Id of the project to be deleted</param>
+        public void RemoveProject(int id)
+        {
+            var project = _projectDao.Read(id);
+            _projectDao.Delete(project);
+            _projectDao.Commit();
+        }
+
+        /// <summary>
+        /// This method removes a skill from the Database
+        /// </summary>
+        /// <param name="id">Id of the skill to be deleted</param>
+        public void RemoveSkill(int id)
+        {
+            var skill = _skillsDao.Read(id);
+            _skillsDao.Delete(skill);
+            _skillsDao.Commit();
         }
 
         #endregion

@@ -74,22 +74,20 @@ namespace Portfolio.Data
         #endregion // Setters
 
         #region GetById
-        /// <summary>
-        /// Returns an ExperienceDTO with the given Id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        
+        EducationDto GetEducationById(int id);
         ExperienceDto GetExperienceById(int id);
+        ProjectDto GetProjectById(int id);
+        SkillDto GetSkillById(int id);
 
         #endregion //GetById
 
         #region Remove
 
-        /// <summary>
-        /// Removes the Experience from the DB with the given Id
-        /// </summary>
-        /// <param name="id"></param>
+        void RemoveEducation(int id);
         void RemoveExperience(int id);
+        void RemoveProject(int id);
+        void RemoveSkill(int id);
         #endregion //Remove
 
     }
