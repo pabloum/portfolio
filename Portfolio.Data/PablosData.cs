@@ -17,10 +17,10 @@ namespace Portfolio.Data
 
         #region DataProperties
         private PersonalInformation Information;
-        private IEnumerable<Education> Education;
+        private IEnumerable<EducationDto> Education;
         private IEnumerable<ExperienceDto> Experience;
-        private IEnumerable<Project> Projects;
-        private IEnumerable<Skill> Skills;
+        private IEnumerable<ProjectDto> Projects;
+        private IEnumerable<SkillDto> Skills;
         #endregion //Daos
 
         #region Constructor
@@ -44,13 +44,13 @@ namespace Portfolio.Data
                 NaturalLanguages = new List<string> { "Spanish (native)", "English (C1)", "French (C1)", "German (B1)" }
             };
 
-            Education = _educationDao.GetAll();
+            Education = GetEducation();
 
             Experience = GetExperience();
 
-            Skills = _skillsDao.GetAll();
+            Skills = GetSkills();
 
-            Projects = _projectDao.GetAll();
+            Projects = GetPortafolio();
         }
         #endregion //Constructor
 
@@ -65,12 +65,12 @@ namespace Portfolio.Data
         }
 
         /// <summary>
-        /// Retrieves a list of education
+        /// Retrieves a list of education dto
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Education> GetEducation()
+        public IEnumerable<EducationDto> GetEducation()
         {
-            Education = _educationDao.GetAll();
+            Education = _educationDao.GetAll().Select(e => e.ToDto());
             return Education;
         }
 
@@ -80,59 +80,61 @@ namespace Portfolio.Data
         /// <returns></returns>
         public IEnumerable<ExperienceDto> GetExperience()
         {
-            Experience = _experienceDao.GetAll().Select(
-                e => new ExperienceDto { 
-                        Id = e.Id,
-                        Company = e.Company,
-                        Position = e.Position,
-                        MainFunctions = e.MainFunctions,
-                        Technologies = e.Technologies,
-                        DateBegining = e.DateBegining,
-                        DateEnd = e.DateEnd,
-                        YearsExperience = e.GetYearsExperience()
-                }
-            );
-
+            Experience = _experienceDao.GetAll().Select(e => e.ToDto());
             return Experience;
         }
 
         /// <summary>
-        /// Retrieves a list of projects
+        /// Retrieves a list of projects dto
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Project> GetPortafolio()
+        public IEnumerable<ProjectDto> GetPortafolio()
         {
-            Projects = _projectDao.GetAll();
+            Projects = _projectDao.GetAll().Select(e => e.ToDto());
             return Projects;
         }
 
         /// <summary>
-        /// Retrieves a list of Skills
+        /// Retrieves a list of Skills dto
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Skill> GetSkills()
+        public IEnumerable<SkillDto> GetSkills()
         {
-            Skills = _skillsDao.GetAll();
+            Skills = _skillsDao.GetAll().Select(e => e.ToDto());
             return Skills;
         }
 
         #endregion //Getters
 
         #region Setters
+
+        public string SetEducation(EducationDto educationDto)
+        {
+            string returnMessage;
+
+            var education = educationDto.ToEntity();
+
+            if (education.Id > 0)
+            {
+                _educationDao.Update(education);
+                returnMessage = "Education updated";
+            }
+            else
+            {
+                _educationDao.Create(education);
+                returnMessage = "Education created";
+            }
+
+            _educationDao.Commit();
+
+            return returnMessage;
+        }
+
         public string SetExperience(ExperienceDto experienceDto)
         {
             string returnMessage;
 
-            var experience = new Experience { 
-                Id              = experienceDto.Id,
-                Position        = experienceDto.Position,
-                Company         = experienceDto.Company,
-                MainFunctions   = experienceDto.MainFunctions,
-                Technologies    = experienceDto.Technologies,
-                DateBegining    = experienceDto.DateBegining,
-                DateEnd         = experienceDto.DateEnd,
-                YearsExperience = experienceDto.YearsExperience
-            };
+            var experience = experienceDto.ToEntity();
 
             if (experience.Id > 0)
             {
@@ -146,6 +148,50 @@ namespace Portfolio.Data
             }
 
             _experienceDao.Commit();
+
+            return returnMessage;
+        }
+
+        public string SetProject(ProjectDto projectDto)
+        {
+            string returnMessage;
+
+            var project = projectDto.ToEntity();
+
+            if (project.Id > 0)
+            {
+                _projectDao.Update(project);
+                returnMessage = "Project updated";
+            }
+            else
+            {
+                _projectDao.Create(project);
+                returnMessage = "Project created";
+            }
+
+            _projectDao.Commit();
+
+            return returnMessage;
+        }
+
+        public string SetSkill(SkillDto skillDto)
+        {
+            string returnMessage;
+
+            var skill = skillDto.ToEntity();
+
+            if (skill.Id > 0)
+            {
+                _skillsDao.Update(skill);
+                returnMessage = "Skill updated";
+            }
+            else
+            {
+                _skillsDao.Create(skill);
+                returnMessage = "Skill created";
+            }
+
+            _skillsDao.Commit();
 
             return returnMessage;
         }

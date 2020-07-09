@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Portfolio.Core.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,5 +21,20 @@ namespace Portfolio.Core
         public DateTime DateBegining { get; set; }
         public DateTime DateEnd { get; set; }
         public decimal YearsExperience { get; set; }
+
+        public ExperienceDto ToDto()
+        {
+            return new ExperienceDto
+            {
+                Id              = this.Id,
+                Company         = this.Company,
+                Position        = this.Position,
+                MainFunctions   = this.MainFunctions,
+                Technologies    = this.Technologies,
+                DateBegining    = this.DateBegining,
+                DateEnd         = this.DateEnd,
+                YearsExperience = GetYearsExperience()
+            };
+        }
     }
 }

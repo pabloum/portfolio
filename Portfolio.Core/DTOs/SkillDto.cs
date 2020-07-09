@@ -10,5 +10,16 @@ namespace Portfolio.Core.DTOs
         public string Name { get; set; }
         public SkillType Category { get; set; }
         public int Percentage { get; set; }
+
+        public Skill ToEntity()
+        {
+            return new Skill
+            {
+                Id = this.Id,
+                Name = this.Name,
+                Category = this.Category,
+                Percentage = this.Percentage
+            };
+        }
     }
 }
