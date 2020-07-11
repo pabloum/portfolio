@@ -32,6 +32,12 @@ namespace Portfolio
                 options.UseSqlServer(Configuration.GetConnectionString("PortfolioDb"));
             });
 
+
+
+            ////The context options could be singleton, not the context instance because each request has a scoped lifetime - atomic transactions)
+            var contextOptions = new DbContextOptionsBuilder<PortfolioDbContext>().UseSqlServer(Configuration.GetConnectionString("PortfolioDb"), options => options.EnableRetryOnFailure()).Options;
+            services.AddSingleton(contextOptions);
+
             //AddInMemoryDaos(services);  // Uncomment this to work wiht In Memory data
             AddSqlDaos(services);     // Uncomment this for working with data in SQL Server
 
