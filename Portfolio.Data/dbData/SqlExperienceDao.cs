@@ -58,7 +58,7 @@ namespace Portfolio.Data.dbData
         {
             using (var context = new PortfolioDbContext(_db))
             {
-                return context.Experience.ToList();
+                return context.Experience.AsNoTracking().ToList();
             }
         }
 

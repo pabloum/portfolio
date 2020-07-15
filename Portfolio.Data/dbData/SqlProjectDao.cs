@@ -50,7 +50,7 @@ namespace Portfolio.Data.dbData
         {
             using (var context = new PortfolioDbContext(_db))
             {
-                return context.Projects.ToList();
+                return context.Projects.AsNoTracking().ToList();
             }
         }
 
