@@ -30,6 +30,7 @@ namespace Portfolio.Data.dbData
             {
                 experience.Id = context.Experience.Max(e => e.Id) + 1;
                 context.Experience.Add(experience);
+                context.SaveChanges();
             }
         }
 
@@ -40,6 +41,7 @@ namespace Portfolio.Data.dbData
                 using (var context = new PortfolioDbContext(_db))
                 {
                     context.Experience.Remove(experience);
+                    context.SaveChanges();
                 }
             }
         }
@@ -75,6 +77,7 @@ namespace Portfolio.Data.dbData
             {
                 var entity = context.Experience.Attach(experience);
                 entity.State = EntityState.Modified;
+                context.SaveChanges();
             }
         }
     }
