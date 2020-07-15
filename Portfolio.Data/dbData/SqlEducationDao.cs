@@ -58,7 +58,7 @@ namespace Portfolio.Data.dbData
         {
             using (var context = new PortfolioDbContext(_db))
             {
-                return context.Education.Find(id);
+                return context.Education.AsNoTracking().SingleOrDefault(e => e.Id == id);
             }
         }
 
