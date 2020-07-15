@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,14 @@ namespace Portfolio.Core.DTOs
 {
     public class EducationDto
     {
+        private readonly IMapper _mapper;
+
+        public EducationDto()
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<EducationDto, Education>());
+            _mapper = new Mapper(config);
+        }
+
         public int Id { get; set; }
         public string University { get; set; }
         public string Title { get; set; }
@@ -15,15 +24,7 @@ namespace Portfolio.Core.DTOs
 
         public Education ToEntity()
         {
-            return new Education
-            {
-                Id           = this.Id,
-                University   = this.University,
-                Title        = this.Title,
-                DateBegining = this.DateBegining,
-                DateEnd      = this.DateEnd,
-                Description  = this.Description
-            };
+            return _mapper.Map<Education>(this);
         }
     }
 }

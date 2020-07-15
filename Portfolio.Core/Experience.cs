@@ -9,6 +9,14 @@ namespace Portfolio.Core
 {
     public class Experience
     {
+        private readonly IMapper _mapper;
+
+        public Experience()
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Experience, ExperienceDto>());
+            _mapper = new Mapper(config);
+        }
+
         public decimal GetYearsExperience()
         {
             YearsExperience = (decimal)Math.Round(((DateEnd - DateBegining).Days / 365.0) * 100) / 100;
@@ -26,9 +34,7 @@ namespace Portfolio.Core
 
         public ExperienceDto ToDto()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Experience, ExperienceDto>());
-            var mapper = new Mapper(config);
-            return mapper.Map<ExperienceDto>(this);
+            return _mapper.Map<ExperienceDto>(this);
         }
     }
 }

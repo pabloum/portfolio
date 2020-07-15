@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 using Portfolio.Data.dbData;
 using Portfolio.Data.InMemory;
@@ -35,6 +37,15 @@ namespace Portfolio
             ////The context options could be singleton, not the context instance because each request has a scoped lifetime - atomic transactions)
             var contextOptions = new DbContextOptionsBuilder<PortfolioDbContext>().UseSqlServer(Configuration.GetConnectionString("PortfolioDb"), options => options.EnableRetryOnFailure()).Options;
             services.AddSingleton(contextOptions);
+
+            var mapper = new Mapper(
+                                new MapperConfiguration(cfg => {
+                                    cfg.CreateMap<ExperienceDto, Experience>();
+                                    cfg.CreateMap<Experience, ExperienceDto>();
+                                }
+                            )
+                        );
+            services.AddSingleton(mapper);
 
             //AddInMemoryDaos(services);  // Uncomment this to work with In Memory data
             AddSqlDaos(services);     // Uncomment this for working with data in SQL Server
