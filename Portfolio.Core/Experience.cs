@@ -1,4 +1,6 @@
-﻿using Portfolio.Core.DTOs;
+﻿using AutoMapper;
+using AutoMapper.Configuration;
+using Portfolio.Core.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,17 +26,9 @@ namespace Portfolio.Core
 
         public ExperienceDto ToDto()
         {
-            return new ExperienceDto
-            {
-                Id              = this.Id,
-                Company         = this.Company,
-                Position        = this.Position,
-                MainFunctions   = this.MainFunctions,
-                Technologies    = this.Technologies,
-                DateBegining    = this.DateBegining,
-                DateEnd         = this.DateEnd,
-                YearsExperience = GetYearsExperience()
-            };
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Experience, ExperienceDto>());
+            var mapper = new Mapper(config);
+            return mapper.Map<ExperienceDto>(this);
         }
     }
 }
