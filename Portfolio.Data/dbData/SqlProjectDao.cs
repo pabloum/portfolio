@@ -9,46 +9,67 @@ namespace Portfolio.Data.dbData
 {
     public class SqlProjectDao : IRepository<Project>
     {
-        private readonly PortfolioDbContext db;
+        private readonly DbContextOptions<PortfolioDbContext> _db;
 
-        public SqlProjectDao(PortfolioDbContext db)
+        public SqlProjectDao(DbContextOptions<PortfolioDbContext> db)
         {
-            this.db = db;
+            _db = db;
         }
 
         public int Commit()
         {
-            return db.SaveChanges();
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.SaveChanges();
+            }
         }
 
         public void Create(Project project)
         {
-            project.Id = db.Projects.Max(p => p.Id) + 1;
-            db.Projects.Add(project);
+            using (var context = new PortfolioDbContext(_db))
+            {
+                project.Id = context.Projects.Max(p => p.Id) + 1;
+                context.Projects.Add(project);
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Project project)
         {
             if (project != null)
             {
-                db.Projects.Remove(project);
+                using (var context = new PortfolioDbContext(_db))
+                {
+                    context.Projects.Remove(project);
+                    context.SaveChanges();
+                }
             }
         }
 
         public IEnumerable<Project> GetAll()
         {
-            return db.Projects;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.Projects.ToList();
+            }
         }
 
         public Project Read(int id)
         {
-            return db.Projects.Find(id);
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.Projects.Find(id);
+            }
         }
 
         public void Update(Project project)
         {
-            var entity = db.Projects.Attach(project);
-            entity.State = EntityState.Modified;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                var entity = context.Projects.Attach(project);
+                entity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

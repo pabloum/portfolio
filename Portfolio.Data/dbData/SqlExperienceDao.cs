@@ -9,7 +9,7 @@ namespace Portfolio.Data.dbData
 {
     public class SqlExperienceDao : IRepository<Experience>, IDisposable
     {
-        private readonly DbContextOptions<PortfolioDbContext >_db;
+        private readonly DbContextOptions<PortfolioDbContext> _db;
 
         public SqlExperienceDao(DbContextOptions<PortfolioDbContext> dbContext)
         {
