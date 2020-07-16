@@ -4,24 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio
 {
     public class DeleteEducationModel : PageModel
     {
-        private readonly IRepository<Education> educationDao;
-        public Education Education { get; set; }
+        private readonly IPablosData pablosData;
+        public EducationDto Education { get; set; }
 
-        public DeleteEducationModel(IRepository<Education> educationDao)
+        public DeleteEducationModel(IPablosData pablosData)
         {
-            this.educationDao = educationDao;
+            this.pablosData = pablosData;
         }
 
         public IActionResult OnGet(int educationId)
         {
-            Education = educationDao.Read(educationId);
+            Education = pablosData.GetEducationById(educationId);
 
             if (Education == null)
             {
@@ -33,9 +33,9 @@ namespace Portfolio
 
         public IActionResult OnPost(int educationId)
         {
-            var education = educationDao.Read(educationId);
-            educationDao.Delete(education);
-            educationDao.Commit();
+            var education = pablosData.GetEducationById(educationId);
+
+            pablosData.RemoveEducation(educationId);
 
             if (education == null)
             {

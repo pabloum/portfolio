@@ -4,25 +4,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio.Pages.Projects
 {
     public class DeleteModel : PageModel
     {
-        private readonly IRepository<Project> projectDao;
+        private readonly IPablosData pablosData;
 
-        public Project Project { get; set; }
+        public ProjectDto Project { get; set; }
 
-        public DeleteModel(IRepository<Project> projectDao)
+        public DeleteModel(IPablosData pablosData)
         {
-            this.projectDao = projectDao;
+            this.pablosData = pablosData;
         }
 
         public IActionResult OnGet(int projectId)
         {
-            Project = projectDao.Read(projectId);
+            Project = pablosData.GetProjectById(projectId);
 
             if (Project == null)
             {
@@ -34,10 +34,9 @@ namespace Portfolio.Pages.Projects
 
         public IActionResult OnPost(int projectId)
         {
-            var project = projectDao.Read(projectId);
+            var project = pablosData.GetProjectById(projectId);
 
-            projectDao.Delete(project);
-            projectDao.Commit();
+            pablosData.RemoveProject(projectId);
 
             if (project == null)
             {

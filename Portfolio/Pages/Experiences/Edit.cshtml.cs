@@ -4,32 +4,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio
 {
     public class EditExperienceModel : PageModel
     {
-        private readonly IRepository<Experience> experienceDao;
+        private readonly IPablosData pablosData;
 
         [BindProperty]
-        public Experience Experience { get; set; }
+        public ExperienceDto Experience { get; set; }
 
-        public EditExperienceModel(IRepository<Experience> experienceDao)
+        public EditExperienceModel(IPablosData pablosData)
         {
-            this.experienceDao = experienceDao;
+            this.pablosData = pablosData;
         }
 
         public IActionResult OnGet(int? experienceId)
         {
             if (experienceId.HasValue)
             {
-                Experience = experienceDao.Read(experienceId.Value);
+                Experience = pablosData.GetExperienceById(experienceId.Value);
             }
             else
             {
-                Experience = new Experience();
+                Experience = new ExperienceDto();
             }
 
             if (Experience == null)
@@ -43,18 +43,8 @@ namespace Portfolio
         {
             if (ModelState.IsValid)
             {
-                if (Experience.Id > 0) 
-                {
-                    TempData["Message"] = "Work updated!";
-                    experienceDao.Update(Experience);
-                }
-                else
-                {
-                    TempData["Message"] = "Work created!";
-                    experienceDao.Create(Experience);
-                }
-
-                experienceDao.Commit();
+                var msg = pablosData.SetExperience(Experience);
+                TempData["Message"] = msg;
 
                 return RedirectToPage("/index");
             }

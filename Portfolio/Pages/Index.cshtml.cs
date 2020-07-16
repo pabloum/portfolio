@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio.Pages
@@ -18,10 +19,10 @@ namespace Portfolio.Pages
         private readonly IHtmlHelper htmlHelper;
 
         public PersonalInformation Information { get; set; }
-        public IEnumerable<Education> Education { get; set; }
-        public IEnumerable<Experience> Experience { get; set; }
-        public IEnumerable<Skill> Skills { get; set; }
-        public IEnumerable<Project> Portafolio { get; set; }
+        public IEnumerable<EducationDto> Education { get; set; }
+        public IEnumerable<ExperienceDto> Experience { get; set; }
+        public IEnumerable<SkillDto> Skills { get; set; }
+        public IEnumerable<ProjectDto> Portafolio { get; set; }
         public IEnumerable<SelectListItem> SkillTypes { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IPablosData pablosData, IHtmlHelper htmlHelper)

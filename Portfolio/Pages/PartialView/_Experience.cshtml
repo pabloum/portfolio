@@ -1,8 +1,8 @@
 ﻿
-@using Portfolio.Core
+@using Portfolio.Core.DTOs
 @using System.Globalization
 
-@model IEnumerable<Experience>
+@model IEnumerable<ExperienceDto>
 
 
     <div id="experience">
@@ -59,7 +59,7 @@
                                 </table>
                             </div>
                             <div class="card-footer">
-                                <small>@job.DateBegining.ToString("MMMM", CultureInfo.InvariantCulture) @job.DateBegining.Year - @job.DateEnd.ToString("MMMM", CultureInfo.InvariantCulture) @job.DateEnd.Year  (@job.GetYearsExperience() years)</small>
+                                <small>@job.DateBegining.ToString("MMMM", CultureInfo.InvariantCulture) @job.DateBegining.Year - @job.DateEnd.ToString("MMMM", CultureInfo.InvariantCulture) @job.DateEnd.Year  (@job.YearsExperience years)</small>
                             </div>
 
                         </div>

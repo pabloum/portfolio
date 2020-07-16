@@ -1,26 +1,18 @@
 ﻿using AutoMapper;
-using AutoMapper.Configuration;
-using Portfolio.Core.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core
+namespace Portfolio.Core.DTOs
 {
-    public class Experience
+    public class ExperienceDto
     {
         private readonly IMapper _mapper;
 
-        public Experience()
+        public ExperienceDto()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Experience, ExperienceDto>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ExperienceDto, Experience>());
             _mapper = new Mapper(config);
-        }
-
-        public decimal GetYearsExperience()
-        {
-            YearsExperience = (decimal)Math.Round(((DateEnd - DateBegining).Days / 365.0) * 100) / 100;
-            return YearsExperience;
         }
 
         public int Id { get; set; }
@@ -32,9 +24,9 @@ namespace Portfolio.Core
         public DateTime DateEnd { get; set; }
         public decimal YearsExperience { get; set; }
 
-        public ExperienceDto ToDto()
+        public Experience ToEntity()
         {
-            return _mapper.Map<ExperienceDto>(this);
+            return _mapper.Map<Experience>(this);
         }
     }
 }

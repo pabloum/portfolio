@@ -1,4 +1,5 @@
 ﻿using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using System.Collections.Generic;
 
 namespace Portfolio.Data
@@ -8,6 +9,7 @@ namespace Portfolio.Data
     /// </summary>
     public interface IPablosData
     {
+        #region Getters
         /// <summary>
         /// Get personal information
         /// </summary>
@@ -18,24 +20,75 @@ namespace Portfolio.Data
         /// Returns the Education 
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Education> GetEducation();
+        IEnumerable<EducationDto> GetEducation();
 
         /// <summary>
         /// Returns all the different jobs where the user has worked in.
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Experience> GetExperience();
+        IEnumerable<ExperienceDto> GetExperience();
 
         /// <summary>
         /// Returns all the Projects the user has worked on
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Project> GetPortafolio();
+        IEnumerable<ProjectDto> GetPortafolio();
 
         /// <summary>
         /// Returns all the skills that the user has
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Skill> GetSkills();
+        IEnumerable<SkillDto> GetSkills();
+        #endregion //Setter
+
+
+        #region Setters
+        /// <summary>
+        /// Sets an education
+        /// </summary>
+        /// <param name="educationDto"></param>
+        /// <returns>Returns a message which describes if an education was created or updated</returns>
+        string SetEducation(EducationDto educationDto);
+
+        /// <summary>
+        /// Sets an experience
+        /// </summary>
+        /// <param name="experienceDto"></param>
+        /// <returns>Returns a message which describes if an experience was created or updated</returns>
+        string SetExperience(ExperienceDto experienceDto);
+
+        /// <summary>
+        /// Sets a new Skill
+        /// </summary>
+        /// <param name="skillDto"></param>
+        /// <returns></returns>
+        string SetSkill(SkillDto skillDto);
+
+        /// <summary>
+        /// Sets a new project
+        /// </summary>
+        /// <param name="projectDto"></param>
+        /// <returns></returns>
+        string SetProject(ProjectDto projectDto);
+
+        #endregion // Setters
+
+        #region GetById
+        
+        EducationDto GetEducationById(int id);
+        ExperienceDto GetExperienceById(int id);
+        ProjectDto GetProjectById(int id);
+        SkillDto GetSkillById(int id);
+
+        #endregion //GetById
+
+        #region Remove
+
+        void RemoveEducation(int id);
+        void RemoveExperience(int id);
+        void RemoveProject(int id);
+        void RemoveSkill(int id);
+        #endregion //Remove
+
     }
 }

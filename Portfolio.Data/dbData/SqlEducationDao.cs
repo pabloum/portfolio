@@ -9,46 +9,67 @@ namespace Portfolio.Data.dbData
 {
     public class SqlEducationDao : IRepository<Education>
     {
-        private readonly PortfolioDbContext db;
+        private readonly DbContextOptions<PortfolioDbContext> _db;
 
-        public SqlEducationDao(PortfolioDbContext db)
+        public SqlEducationDao(DbContextOptions<PortfolioDbContext> db)
         {
-            this.db = db;
+            _db = db;
         }
 
         public int Commit()
         {
-            return db.SaveChanges();
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.SaveChanges();
+            }
         }
 
         public void Create(Education education)
         {
-            education.Id = db.Education.Max(e => e.Id) + 1;
-            db.Education.Add(education);
+            using (var context = new PortfolioDbContext(_db))
+            {
+                education.Id = context.Education.Max(e => e.Id) + 1;
+                context.Education.Add(education);
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Education education)
         {
             if (education != null)
             {
-                db.Education.Remove(education);
+                using (var context = new PortfolioDbContext(_db))
+                {
+                    context.Education.Remove(education);
+                    context.SaveChanges();
+                }
             }
         }
 
         public IEnumerable<Education> GetAll()
         {
-            return db.Education;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.Education.AsNoTracking().ToList();
+            }
         }
 
         public Education Read(int id)
         {
-            return db.Education.Find(id);
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.Education.AsNoTracking().SingleOrDefault(e => e.Id == id);
+            }
         }
 
         public void Update(Education education)
         {
-            var entity = db.Education.Attach(education);
-            entity.State = EntityState.Modified;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                var entity = context.Education.Attach(education);
+                entity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

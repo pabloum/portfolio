@@ -9,46 +9,67 @@ namespace Portfolio.Data.dbData
 {
     public class SqlSkillsDao : IRepository<Skill>
     {
-        private readonly PortfolioDbContext db;
+        private readonly DbContextOptions<PortfolioDbContext> _db;
 
-        public SqlSkillsDao(PortfolioDbContext db)
+        public SqlSkillsDao(DbContextOptions<PortfolioDbContext> db)
         {
-            this.db = db;
+            _db = db;
         }
 
         public int Commit()
         {
-            return db.SaveChanges();
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.SaveChanges();
+            }
         }
 
         public void Create(Skill skill)
         {
-            skill.Id = db.Skills.Max(s => s.Id) + 1;
-            db.Skills.Add(skill);
+            using (var context = new PortfolioDbContext(_db))
+            {
+                skill.Id = context.Skills.Max(s => s.Id) + 1;
+                context.Skills.Add(skill);
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Skill skill)
         {
             if (skill != null)
             {
-                db.Skills.Remove(skill);
+                using (var context = new PortfolioDbContext(_db))
+                {
+                    context.Skills.Remove(skill);
+                    context.SaveChanges();
+                }
             }
         }
 
         public IEnumerable<Skill> GetAll()
         {
-            return db.Skills;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.Skills.AsNoTracking().ToList();
+            }
         }
 
         public Skill Read(int id)
         {
-            return db.Skills.Find(id);
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.Skills.AsNoTracking().SingleOrDefault(e => e.Id == id);
+            }
         }
 
         public void Update(Skill skill)
         {
-            var entity = db.Skills.Attach(skill);
-            entity.State = EntityState.Modified;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                var entity = context.Skills.Attach(skill);
+                entity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

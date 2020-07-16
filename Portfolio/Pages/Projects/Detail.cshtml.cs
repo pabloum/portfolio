@@ -4,25 +4,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio.Pages.Projects
 {
     public class DetailModel : PageModel
     {
-        private readonly IRepository<Project> projectDao;
+        private readonly IPablosData pablosData;
 
-        public Project Project { get; set; }
+        public ProjectDto Project { get; set; }
 
-        public DetailModel(IRepository<Project> projectDao)
+        public DetailModel(IPablosData pablosData)
         {
-            this.projectDao = projectDao;
+            this.pablosData = pablosData;
         }
 
         public IActionResult OnGet(int projectId)
         {
-            Project = projectDao.Read(projectId);
+            Project = pablosData.GetProjectById(projectId);
 
             return Page();
         }

@@ -4,25 +4,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio
 {
     public class DetailEducationModel : PageModel
     {
-        private readonly IRepository<Education> educationDao;
+        private readonly IPablosData pablosData;
 
-        public Education Education { get; set; }
+        public EducationDto Education { get; set; }
 
-        public DetailEducationModel(IRepository<Education> educationDao)
+        public DetailEducationModel(IPablosData pablosData)
         {
-            this.educationDao = educationDao;
+            this.pablosData = pablosData;
         }
 
         public void OnGet(int educationId)
         {
-            Education = educationDao.Read(educationId);
+            Education = pablosData.GetEducationById(educationId);
         }
     }
 }

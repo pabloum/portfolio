@@ -1,18 +1,17 @@
 ﻿using AutoMapper;
-using Portfolio.Core.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core
+namespace Portfolio.Core.DTOs
 {
-    public class Skill
+    public class SkillDto
     {
         private readonly IMapper _mapper;
 
-        public Skill()
+        public SkillDto()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Skill, SkillDto>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<SkillDto, Skill>());
             _mapper = new Mapper(config);
         }
 
@@ -21,9 +20,9 @@ namespace Portfolio.Core
         public SkillType Category { get; set; }
         public int Percentage { get; set; }
 
-        public SkillDto ToDto()
+        public Skill ToEntity()
         {
-            return _mapper.Map<SkillDto>(this);
+            return _mapper.Map<Skill>(this);
         }
     }
 }

@@ -4,24 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio.Pages.Skills
 {
     public class DeleteModel : PageModel
     {
-        private readonly IRepository<Skill> skillDao;
+        private readonly IPablosData pablosData;
 
-        public Skill Skill { get; set; }
+        public SkillDto Skill { get; set; }
 
-        public DeleteModel(IRepository<Skill> skillDao)
+        public DeleteModel(IPablosData pablosData)
         {
-            this.skillDao = skillDao;
+            this.pablosData = pablosData;
         }
         public IActionResult OnGet(int skillId)
         {
-            Skill = skillDao.Read(skillId);
+            Skill = pablosData.GetSkillById(skillId);
 
             if (Skill == null)
             {
@@ -33,10 +33,9 @@ namespace Portfolio.Pages.Skills
 
         public IActionResult OnPost(int skillId)
         {
-            var skill = skillDao.Read(skillId);
+            var skill = pablosData.GetSkillById(skillId);
 
-            skillDao.Delete(skill);
-            skillDao.Commit();
+            pablosData.RemoveSkill(skillId);
 
             if (skill == null)
             {

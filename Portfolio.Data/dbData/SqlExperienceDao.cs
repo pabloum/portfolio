@@ -7,50 +7,78 @@ using System.Text;
 
 namespace Portfolio.Data.dbData
 {
-    public class SqlExperienceDao : IRepository<Experience>
+    public class SqlExperienceDao : IRepository<Experience>, IDisposable
     {
-        private readonly PortfolioDbContext db;
+        private readonly DbContextOptions<PortfolioDbContext> _db;
 
-        public SqlExperienceDao(PortfolioDbContext db)
+        public SqlExperienceDao(DbContextOptions<PortfolioDbContext> dbContext)
         {
-            this.db = db;
+            _db = dbContext;
         }
 
-        public int Commit()
+        public int Commit() // OJO
         {
-            return db.SaveChanges();
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.SaveChanges();
+            }
         }
 
         public void Create(Experience experience)
         {
-            experience.Id = db.Experience.Max(e => e.Id) + 1;
-            db.Experience.Add(experience);
+            using (var context = new PortfolioDbContext(_db) )
+            {
+                experience.Id = context.Experience.Max(e => e.Id) + 1;
+                context.Experience.Add(experience);
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Experience experience)
         {
             if (experience != null)
             {
-                db.Experience.Remove(experience);
+                using (var context = new PortfolioDbContext(_db))
+                {
+                    context.Experience.Remove(experience);
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            using (var context = new PortfolioDbContext(_db))
+            {
+                context.Dispose();
             }
         }
 
         public IEnumerable<Experience> GetAll()
         {
-            return db.Experience;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                return context.Experience.AsNoTracking().ToList();
+            }
         }
 
         public Experience Read(int id)
         {
-            //var experience = db.Experience.Where(r => r.Id == id).SingleOrDefault();
-            var experience =  db.Experience.Find(id);
-            return experience;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                var experience =  context.Experience.AsNoTracking().SingleOrDefault(e => e.Id == id); //WITH NO LOCK
+                return experience;
+            }
         }
 
         public void Update(Experience experience)
         {
-            var entity = db.Experience.Attach(experience);
-            entity.State = EntityState.Modified;
+            using (var context = new PortfolioDbContext(_db))
+            {
+                var entity = context.Experience.Attach(experience);
+                entity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

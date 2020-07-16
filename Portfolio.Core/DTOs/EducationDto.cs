@@ -1,18 +1,17 @@
 ﻿using AutoMapper;
-using Portfolio.Core.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core
+namespace Portfolio.Core.DTOs
 {
-    public class Education
+    public class EducationDto
     {
         private readonly IMapper _mapper;
 
-        public Education()
+        public EducationDto()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Education, EducationDto>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<EducationDto, Education>());
             _mapper = new Mapper(config);
         }
 
@@ -23,9 +22,9 @@ namespace Portfolio.Core
         public DateTime DateEnd { get; set; }
         public string Description { get; set; }
 
-        public EducationDto ToDto()
+        public Education ToEntity()
         {
-            return _mapper.Map<EducationDto>(this);
+            return _mapper.Map<Education>(this);
         }
     }
 }

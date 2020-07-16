@@ -4,23 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Core;
+using Portfolio.Core.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio
 {
     public class DetailExperienceModel : PageModel
     {
-        private readonly IRepository<Experience> experienceDao;
+        private readonly IPablosData pablosData;
 
-        public Experience Experience { get; set; }
-        public DetailExperienceModel(IRepository<Experience> experienceDao)
+        public ExperienceDto Experience { get; set; }
+        public DetailExperienceModel(IPablosData pablosData)
         {
-            this.experienceDao = experienceDao;
+            this.pablosData = pablosData;
         }
         public IActionResult OnGet(int experienceId)
         {
-            Experience = experienceDao.Read(experienceId);
+            Experience = pablosData.GetExperienceById(experienceId);
 
             if (Experience == null)
             {
