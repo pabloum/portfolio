@@ -1,20 +1,13 @@
 ﻿using AutoMapper;
+using Portfolio.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Portfolio.Core.DTOs
 {
-    public class ProjectDto
+    public class ProjectDto : Entity
     {
-        private readonly IMapper _mapper;
-
-        public ProjectDto()
-        {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProjectDto, Project>());
-            _mapper = new Mapper(config);
-        }
-
         public int Id { get; set; }
         public string ProjectName { get; set; }
         public string Technologies { get; set; }

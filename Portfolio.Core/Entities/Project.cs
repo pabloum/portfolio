@@ -4,18 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core
+namespace Portfolio.Core.Entities
 {
-    public class Project
+    public class Project : Entity
     {
-        private readonly IMapper _mapper;
-
-        public Project()
-        {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Project, ProjectDto>());
-            _mapper = new Mapper(config);
-        }
-
         public int Id { get; set; }
         public string ProjectName { get; set; }
         public string Technologies { get; set; }

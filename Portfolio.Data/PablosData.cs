@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Portfolio.Core;
+using Portfolio.Core.Entities;
 using Portfolio.Core.DTOs;
 
 namespace Portfolio.Data

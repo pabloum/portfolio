@@ -4,18 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core
+namespace Portfolio.Core.Entities
 {
-    public class Skill
+    public class Skill : Entity
     {
-        private readonly IMapper _mapper;
-
-        public Skill()
-        {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Skill, SkillDto>());
-            _mapper = new Mapper(config);
-        }
-
         public int Id { get; set; }
         public string Name { get; set; }
         public SkillType Category { get; set; }

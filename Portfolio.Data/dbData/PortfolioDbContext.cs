@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Portfolio.Core;
+using Portfolio.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
