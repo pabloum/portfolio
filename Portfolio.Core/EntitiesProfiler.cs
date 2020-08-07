@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Portfolio.Core.DTOs;
-using Portfolio.Core.Entities;
+using Portfolio.Entities.DTOs;
+using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Portfolio.Core
+namespace Portfolio.Entities
 {
     public class EntitiesProfiler : Profile
     {

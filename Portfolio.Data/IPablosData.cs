@@ -1,5 +1,5 @@
-﻿using Portfolio.Core;
-using Portfolio.Core.DTOs;
+﻿using Portfolio.Entities;
+using Portfolio.Entities.DTOs;
 using System.Collections.Generic;
 
 namespace Portfolio.Data

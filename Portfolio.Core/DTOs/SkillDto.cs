@@ -1,11 +1,11 @@
-﻿using Portfolio.Core.Entities;
+﻿using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core.DTOs
+namespace Portfolio.Entities.DTOs
 {
-    public class SkillDto : Entity
+    public class SkillDto : EntityBase
     {
         public int Id { get; set; }
         public string Name { get; set; }

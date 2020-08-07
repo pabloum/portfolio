@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Portfolio.Core.DTOs;
+using Portfolio.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core.Entities
+namespace Portfolio.Entities.Entities
 {
-    public class Skill : Entity
+    public class Skill : EntityBase
     {
         public int Id { get; set; }
         public string Name { get; set; }

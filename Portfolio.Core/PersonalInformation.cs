@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Portfolio.Core
+namespace Portfolio.Entities
 {
     public class PersonalInformation
     {

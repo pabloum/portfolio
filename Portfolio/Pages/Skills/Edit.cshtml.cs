@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Portfolio.Core.DTOs;
-using Portfolio.Core;
+using Portfolio.Entities.DTOs;
+using Portfolio.Entities;
 using Portfolio.Data;
 
 namespace Portfolio.Pages.Skills

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Portfolio.Core.Entities;
+using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core.DTOs
+namespace Portfolio.Entities.DTOs
 {
-    public class ExperienceDto : Entity
+    public class ExperienceDto : EntityBase
     {
         public int Id { get; set; }
         public string Company { get; set; }

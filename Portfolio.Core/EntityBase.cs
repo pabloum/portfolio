@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 
-namespace Portfolio.Core.DTOs
+namespace Portfolio.Entities
 {
-    public class Entity
+    public abstract class EntityBase
     {
         protected readonly IMapper _mapper;
 
-        public Entity()
+        public EntityBase()
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile<EntitiesProfiler>());
             _mapper = new Mapper(configuration);

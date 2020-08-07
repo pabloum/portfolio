@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Portfolio.Core.Entities;
+using Portfolio.Entities.Entities;
 using Portfolio.Data;
 using Portfolio.Data.dbData;
 using Portfolio.Data.InMemory;

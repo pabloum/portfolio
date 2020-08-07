@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Portfolio.Core.Entities;
+using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core.DTOs
+namespace Portfolio.Entities.DTOs
 {    
-    public class EducationDto : Entity
+    public class EducationDto : EntityBase
     {
         public int Id { get; set; }
         public string University { get; set; }

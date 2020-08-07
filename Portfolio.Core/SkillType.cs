@@ -1,4 +1,4 @@
-﻿namespace Portfolio.Core
+﻿namespace Portfolio.Entities
 {
     public enum SkillType
     {

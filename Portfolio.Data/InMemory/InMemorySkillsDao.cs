@@ -1,5 +1,5 @@
-﻿using Portfolio.Core;
-using Portfolio.Core.Entities;
+﻿using Portfolio.Entities;
+using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
