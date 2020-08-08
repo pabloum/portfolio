@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using Portfolio.Core;
-using Portfolio.Core.DTOs;
+using Portfolio.Entities;
+using Portfolio.Entities.DTOs;
 using Portfolio.Data;
 
 namespace Portfolio.Pages

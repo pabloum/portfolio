@@ -1,21 +1,13 @@
 ﻿using AutoMapper;
-using Portfolio.Core.DTOs;
+using Portfolio.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core
+namespace Portfolio.Entities.Entities
 {
-    public class Skill
+    public class Skill : EntityBase
     {
-        private readonly IMapper _mapper;
-
-        public Skill()
-        {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Skill, SkillDto>());
-            _mapper = new Mapper(config);
-        }
-
         public int Id { get; set; }
         public string Name { get; set; }
         public SkillType Category { get; set; }

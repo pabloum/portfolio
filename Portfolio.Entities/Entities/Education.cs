@@ -1,21 +1,13 @@
 ﻿using AutoMapper;
-using Portfolio.Core.DTOs;
+using Portfolio.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core
+namespace Portfolio.Entities.Entities
 {
-    public class Education
+    public class Education : EntityBase
     {
-        private readonly IMapper _mapper;
-
-        public Education()
-        {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Education, EducationDto>());
-            _mapper = new Mapper(config);
-        }
-
         public int Id { get; set; }
         public string University { get; set; }
         public string Title { get; set; }

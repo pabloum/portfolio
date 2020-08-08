@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio", "Portfolio.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Data", "..\Portfolio.Data\Portfolio.Data.csproj", "{9AB1AD6A-1000-43FF-879A-CA2FD33C3B3F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Core", "..\Portfolio.Core\Portfolio.Core.csproj", "{296AF8A9-01ED-45D2-BF82-AA840CCE39A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Entities", "..\Portfolio.Entities\Portfolio.Entities.csproj", "{296AF8A9-01ED-45D2-BF82-AA840CCE39A2}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database1", "..\Database1\Database1.sqlproj", "{84E9474E-0F8B-4B0C-AECB-FF5C3C444018}"
 EndProject

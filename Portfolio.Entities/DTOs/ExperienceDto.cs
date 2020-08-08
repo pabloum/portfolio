@@ -1,20 +1,13 @@
 ﻿using AutoMapper;
+using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portfolio.Core.DTOs
+namespace Portfolio.Entities.DTOs
 {
-    public class ExperienceDto
+    public class ExperienceDto : EntityBase
     {
-        private readonly IMapper _mapper;
-
-        public ExperienceDto()
-        {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ExperienceDto, Experience>());
-            _mapper = new Mapper(config);
-        }
-
         public int Id { get; set; }
         public string Company { get; set; }
         public string Position { get; set; }
