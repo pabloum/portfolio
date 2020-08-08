@@ -1,4 +1,5 @@
-﻿using Portfolio.Entities.Entities;
+﻿using Portfolio.Data.Utility;
+using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,11 +46,7 @@ namespace Portfolio.Data.InMemory
 
             if (record != null) 
             {
-                record.University = education.University;
-                record.Title = education.Title;
-                record.DateBegining = education.DateBegining;
-                record.DateEnd = education.DateEnd;
-                record.Description = education.Description;
+                Education.ReplaceWith(record,education);
             }
         }
 

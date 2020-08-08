@@ -1,8 +1,7 @@
-﻿using Portfolio.Entities.Entities;
-using System;
+﻿using Portfolio.Data.Utility;
+using Portfolio.Entities.Entities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Portfolio.Data.InMemory
 {
@@ -42,9 +41,7 @@ namespace Portfolio.Data.InMemory
 
             if (result != null)
             {
-                result.ProjectName = project.ProjectName;
-                result.Technologies = project.Technologies;
-                result.Description = project.Description;
+                Projects.ReplaceWith(result, project);
             }
         }
 

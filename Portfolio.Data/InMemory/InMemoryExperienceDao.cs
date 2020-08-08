@@ -1,4 +1,5 @@
-﻿using Portfolio.Entities.Entities;
+﻿using Portfolio.Data.Utility;
+using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,14 +44,9 @@ namespace Portfolio.Data.InMemory
         public void Update(Experience experience)
         {
             var record = Experience.SingleOrDefault(r => r.Id == experience.Id);
-
             if (record != null) 
             {
-                record.Company = experience.Company;
-                record.MainFunctions = experience.MainFunctions;
-                record.Position = experience.Position;
-                record.DateBegining = experience.DateBegining;
-                record.DateEnd = experience.DateEnd;
+                Experience.ReplaceWith(record, experience);
             }
         }
 

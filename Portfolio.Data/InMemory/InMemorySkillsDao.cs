@@ -1,4 +1,5 @@
-﻿using Portfolio.Entities;
+﻿using Portfolio.Data.Utility;
+using Portfolio.Entities;
 using Portfolio.Entities.Entities;
 using System;
 using System.Collections.Generic;
@@ -46,9 +47,7 @@ namespace Portfolio.Data.InMemory
 
             if (result != null)
             {
-                result.Name = skill.Name;
-                result.Percentage = skill.Percentage;
-                result.Category = skill.Category;
+                Skills.ReplaceWith(result, skill);
             }
         }
 
