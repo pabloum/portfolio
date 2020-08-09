@@ -43,6 +43,8 @@ namespace Portfolio
             AddSqlDaos(services);     // Uncomment this for working with data in SQL Server
 
             services.AddRazorPages();
+
+            services.AddMvc(opt => opt.EnableEndpointRouting = false);
         }
         public void AddSqlDaos(IServiceCollection services)
         {
@@ -83,6 +85,8 @@ namespace Portfolio
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {
