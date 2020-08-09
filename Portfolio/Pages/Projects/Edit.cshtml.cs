@@ -11,21 +11,21 @@ namespace Portfolio.Pages.Projects
 {
     public class EditModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         [BindProperty]
         public ProjectDto Project { get; set; }
 
-        public EditModel(IPablosData pablosData)
+        public EditModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
 
         public IActionResult OnGet(int? projectId)
         {
             if (projectId.HasValue)
             {
-                Project = pablosData.GetProjectById(projectId.Value);
+                Project = repository.GetProjectById(projectId.Value);
             }
             else
             {
@@ -44,7 +44,7 @@ namespace Portfolio.Pages.Projects
         {
             if (ModelState.IsValid)
             {
-                TempData["Message"] = pablosData.SetProject(Project);
+                TempData["Message"] = repository.SetProject(Project);
 
                 return RedirectToPage("/index");
             }

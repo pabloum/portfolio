@@ -11,21 +11,21 @@ namespace Portfolio
 {
     public class EditExperienceModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         [BindProperty]
         public ExperienceDto Experience { get; set; }
 
-        public EditExperienceModel(IPablosData pablosData)
+        public EditExperienceModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
 
         public IActionResult OnGet(int? experienceId)
         {
             if (experienceId.HasValue)
             {
-                Experience = pablosData.GetExperienceById(experienceId.Value);
+                Experience = repository.GetExperienceById(experienceId.Value);
             }
             else
             {
@@ -43,7 +43,7 @@ namespace Portfolio
         {
             if (ModelState.IsValid)
             {
-                var msg = pablosData.SetExperience(Experience);
+                var msg = repository.SetExperience(Experience);
                 TempData["Message"] = msg;
 
                 return RedirectToPage("/index");

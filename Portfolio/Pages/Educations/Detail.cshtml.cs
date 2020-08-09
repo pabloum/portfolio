@@ -11,18 +11,18 @@ namespace Portfolio
 {
     public class DetailEducationModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         public EducationDto Education { get; set; }
 
-        public DetailEducationModel(IPablosData pablosData)
+        public DetailEducationModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
 
         public void OnGet(int educationId)
         {
-            Education = pablosData.GetEducationById(educationId);
+            Education = repository.GetEducationById(educationId);
         }
     }
 }

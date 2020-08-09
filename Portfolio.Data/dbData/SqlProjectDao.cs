@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Portfolio.Data.dbData
 {
-    public class SqlProjectDao : IRepository<Project>
+    public class SqlProjectDao : IDao<Project>
     {
         private readonly DbContextOptions<PortfolioDbContext> _db;
 

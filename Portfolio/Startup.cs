@@ -46,22 +46,22 @@ namespace Portfolio
         }
         public void AddSqlDaos(IServiceCollection services)
         {
-            services.AddScoped<IPablosData, PablosData>();
+            services.AddScoped<IRepository, Repository>();
 
-            services.AddScoped<IRepository<Education>, SqlEducationDao>();
-            services.AddScoped<IRepository<Experience>, SqlExperienceDao>();
-            services.AddScoped<IRepository<Project>, SqlProjectDao>();
-            services.AddScoped<IRepository<Skill>, SqlSkillsDao>();
+            services.AddScoped<IDao<Education>, SqlEducationDao>();
+            services.AddScoped<IDao<Experience>, SqlExperienceDao>();
+            services.AddScoped<IDao<Project>, SqlProjectDao>();
+            services.AddScoped<IDao<Skill>, SqlSkillsDao>();
         }
 
         public void AddInMemoryDaos(IServiceCollection services)
         {
-            services.AddSingleton<IPablosData, PablosData>();
+            services.AddSingleton<IRepository, Repository>();
 
-            services.AddSingleton<IRepository<Education>, InMemoryEducationDao>();
-            services.AddSingleton<IRepository<Experience>, InMemoryExperienceDao>();
-            services.AddSingleton<IRepository<Project>, InMemoryProjectDao>();
-            services.AddSingleton<IRepository<Skill>, InMemorySkillsDao>();
+            services.AddSingleton<IDao<Education>, InMemoryEducationDao>();
+            services.AddSingleton<IDao<Experience>, InMemoryExperienceDao>();
+            services.AddSingleton<IDao<Project>, InMemoryProjectDao>();
+            services.AddSingleton<IDao<Skill>, InMemorySkillsDao>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -11,16 +11,16 @@ namespace Portfolio.Pages.Skills
 {
     public class EditModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
         private readonly IHtmlHelper htmlHelper;
 
         [BindProperty]
         public SkillDto Skill { get; set; }
         public IEnumerable<SelectListItem> SkillTypes { get; set; }
 
-        public EditModel(IPablosData pablosData, IHtmlHelper htmlHelper)
+        public EditModel(IRepository repository, IHtmlHelper htmlHelper)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
             this.htmlHelper = htmlHelper;
 
             SkillTypes = htmlHelper.GetEnumSelectList<SkillType>();
@@ -30,7 +30,7 @@ namespace Portfolio.Pages.Skills
         {
             if (skillId.HasValue)
             {
-                Skill = pablosData.GetSkillById(skillId.Value);
+                Skill = repository.GetSkillById(skillId.Value);
             }
             else
             {
@@ -49,7 +49,7 @@ namespace Portfolio.Pages.Skills
         {
             if (ModelState.IsValid)
             {
-                pablosData.SetSkill(Skill);
+                repository.SetSkill(Skill);
                 return RedirectToPage("/index");
             }
 

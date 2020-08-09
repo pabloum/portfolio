@@ -11,18 +11,18 @@ namespace Portfolio.Pages.Projects
 {
     public class DetailModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         public ProjectDto Project { get; set; }
 
-        public DetailModel(IPablosData pablosData)
+        public DetailModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
 
         public IActionResult OnGet(int projectId)
         {
-            Project = pablosData.GetProjectById(projectId);
+            Project = repository.GetProjectById(projectId);
 
             return Page();
         }

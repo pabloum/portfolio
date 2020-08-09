@@ -15,7 +15,7 @@ namespace Portfolio.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IPablosData PablosData;
+        private readonly IRepository repository;
         private readonly IHtmlHelper htmlHelper;
 
         public PersonalInformation Information { get; set; }
@@ -25,10 +25,10 @@ namespace Portfolio.Pages
         public IEnumerable<ProjectDto> Portafolio { get; set; }
         public IEnumerable<SelectListItem> SkillTypes { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IPablosData pablosData, IHtmlHelper htmlHelper)
+        public IndexModel(ILogger<IndexModel> logger, IRepository repository, IHtmlHelper htmlHelper)
         {
             _logger = logger;
-            this.PablosData = pablosData;
+            this.repository = repository;
             this.htmlHelper = htmlHelper;
 
             SkillTypes = htmlHelper.GetEnumSelectList<SkillType>();
@@ -36,11 +36,11 @@ namespace Portfolio.Pages
 
         public void OnGet()
         {
-            Information = PablosData.GetInformation();
-            Education = PablosData.GetEducation();
-            Experience = PablosData.GetExperience();
-            Portafolio = PablosData.GetPortafolio();
-            Skills =    PablosData.GetSkills();
+            Information = repository.GetInformation();
+            Education = repository.GetEducation();
+            Experience = repository.GetExperience();
+            Portafolio = repository.GetPortafolio();
+            Skills =    repository.GetSkills();
         }
     }
 }

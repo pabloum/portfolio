@@ -1,50 +1,93 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Portfolio.Entities;
+using Portfolio.Entities.DTOs;
+using System.Collections.Generic;
 
 namespace Portfolio.Data
 {
     /// <summary>
-    /// Interface for all Entities DAOs (Data Access Objects)
+    /// <see cref=""/>
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface IRepository<T>
+    public interface IRepository
     {
+        #region Getters
         /// <summary>
-        /// Retrieves all records of table
+        /// Get personal information
         /// </summary>
         /// <returns></returns>
-        IEnumerable<T> GetAll();
+        PersonalInformation GetInformation();
 
         /// <summary>
-        /// Creates an entity
-        /// </summary>
-        /// <param name="entity"></param>
-        void Create(T entity);
-
-        /// <summary>
-        /// Gets an record by ID
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        T Read(int id);
-
-        /// <summary>
-        /// Updates an entity
-        /// </summary>
-        /// <param name="entity"></param>
-        void Update(T entity);
-
-        /// <summary>
-        /// Deletes an entity
-        /// </summary>
-        /// <param name="entity"></param>
-        void Delete(T entity);
-
-        /// <summary>
-        /// Save changes in the DataBase
+        /// Returns the Education 
         /// </summary>
         /// <returns></returns>
-        int Commit();
+        IEnumerable<EducationDto> GetEducation();
+
+        /// <summary>
+        /// Returns all the different jobs where the user has worked in.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<ExperienceDto> GetExperience();
+
+        /// <summary>
+        /// Returns all the Projects the user has worked on
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<ProjectDto> GetPortafolio();
+
+        /// <summary>
+        /// Returns all the skills that the user has
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<SkillDto> GetSkills();
+        #endregion //Setter
+
+        #region Setters
+        /// <summary>
+        /// Sets an education
+        /// </summary>
+        /// <param name="educationDto"></param>
+        /// <returns>Returns a message which describes if an education was created or updated</returns>
+        string SetEducation(EducationDto educationDto);
+
+        /// <summary>
+        /// Sets an experience
+        /// </summary>
+        /// <param name="experienceDto"></param>
+        /// <returns>Returns a message which describes if an experience was created or updated</returns>
+        string SetExperience(ExperienceDto experienceDto);
+
+        /// <summary>
+        /// Sets a new Skill
+        /// </summary>
+        /// <param name="skillDto"></param>
+        /// <returns></returns>
+        string SetSkill(SkillDto skillDto);
+
+        /// <summary>
+        /// Sets a new project
+        /// </summary>
+        /// <param name="projectDto"></param>
+        /// <returns></returns>
+        string SetProject(ProjectDto projectDto);
+
+        #endregion // Setters
+
+        #region GetById
+        
+        EducationDto GetEducationById(int id);
+        ExperienceDto GetExperienceById(int id);
+        ProjectDto GetProjectById(int id);
+        SkillDto GetSkillById(int id);
+
+        #endregion //GetById
+
+        #region Remove
+
+        void RemoveEducation(int id);
+        void RemoveExperience(int id);
+        void RemoveProject(int id);
+        void RemoveSkill(int id);
+        #endregion //Remove
+
     }
 }

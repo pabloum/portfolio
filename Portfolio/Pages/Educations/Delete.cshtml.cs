@@ -11,17 +11,17 @@ namespace Portfolio
 {
     public class DeleteEducationModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
         public EducationDto Education { get; set; }
 
-        public DeleteEducationModel(IPablosData pablosData)
+        public DeleteEducationModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
 
         public IActionResult OnGet(int educationId)
         {
-            Education = pablosData.GetEducationById(educationId);
+            Education = repository.GetEducationById(educationId);
 
             if (Education == null)
             {
@@ -33,9 +33,9 @@ namespace Portfolio
 
         public IActionResult OnPost(int educationId)
         {
-            var education = pablosData.GetEducationById(educationId);
+            var education = repository.GetEducationById(educationId);
 
-            pablosData.RemoveEducation(educationId);
+            repository.RemoveEducation(educationId);
 
             if (education == null)
             {

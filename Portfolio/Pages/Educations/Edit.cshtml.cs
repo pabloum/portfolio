@@ -11,20 +11,20 @@ namespace Portfolio
 {
     public class EditEducationModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         [BindProperty]
         public EducationDto Education { get; set; }
 
-        public EditEducationModel(IPablosData pablosData)
+        public EditEducationModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
         public IActionResult OnGet(int? educationId)
         {
             if (educationId.HasValue)
             {
-                Education = pablosData.GetEducationById(educationId.Value);
+                Education = repository.GetEducationById(educationId.Value);
             }
             else
             {
@@ -43,7 +43,7 @@ namespace Portfolio
         {
             if (ModelState.IsValid)
             {
-                TempData["Message"] = pablosData.SetEducation(Education);
+                TempData["Message"] = repository.SetEducation(Education);
 
                 return RedirectToPage("/index");
             }

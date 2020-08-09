@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Portfolio.Data.InMemory
 {
-    public class InMemorySkillsDao : IRepository<Skill>
+    public class InMemorySkillsDao : IDao<Skill>
     {
         private List<Skill> Skills { get; set; }
 

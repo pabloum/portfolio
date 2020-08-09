@@ -7,13 +7,13 @@ using Portfolio.Entities.DTOs;
 
 namespace Portfolio.Data
 {
-    public class PablosData : IPablosData
+    public class Repository : IRepository
     {
         #region Daos
-        private readonly IRepository<Education> _educationDao;
-        private readonly IRepository<Experience> _experienceDao;
-        private readonly IRepository<Skill> _skillsDao;
-        private readonly IRepository<Project> _projectDao;
+        private readonly IDao<Education> _educationDao;
+        private readonly IDao<Experience> _experienceDao;
+        private readonly IDao<Skill> _skillsDao;
+        private readonly IDao<Project> _projectDao;
         #endregion //Daos
 
         #region DataProperties
@@ -25,8 +25,8 @@ namespace Portfolio.Data
         #endregion //Daos
 
         #region Constructor
-        public PablosData(IRepository<Education> educationDao, IRepository<Experience> experienceDao, 
-                                   IRepository<Skill> skillsDao, IRepository<Project> projectDao)
+        public Repository(IDao<Education> educationDao, IDao<Experience> experienceDao, 
+                                   IDao<Skill> skillsDao, IDao<Project> projectDao)
         {
             _educationDao = educationDao;
             _experienceDao = experienceDao;

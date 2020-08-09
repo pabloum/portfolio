@@ -11,18 +11,18 @@ namespace Portfolio.Pages.Projects
 {
     public class DeleteModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         public ProjectDto Project { get; set; }
 
-        public DeleteModel(IPablosData pablosData)
+        public DeleteModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
 
         public IActionResult OnGet(int projectId)
         {
-            Project = pablosData.GetProjectById(projectId);
+            Project = repository.GetProjectById(projectId);
 
             if (Project == null)
             {
@@ -34,9 +34,9 @@ namespace Portfolio.Pages.Projects
 
         public IActionResult OnPost(int projectId)
         {
-            var project = pablosData.GetProjectById(projectId);
+            var project = repository.GetProjectById(projectId);
 
-            pablosData.RemoveProject(projectId);
+            repository.RemoveProject(projectId);
 
             if (project == null)
             {

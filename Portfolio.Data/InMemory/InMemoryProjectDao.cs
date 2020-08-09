@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Portfolio.Data.InMemory
 {
-    public class InMemoryProjectDao : IRepository<Project>
+    public class InMemoryProjectDao : IDao<Project>
     {
         private List<Project> Projects { get; set; }
         public InMemoryProjectDao()

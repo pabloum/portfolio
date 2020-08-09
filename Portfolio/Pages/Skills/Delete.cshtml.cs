@@ -11,17 +11,17 @@ namespace Portfolio.Pages.Skills
 {
     public class DeleteModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         public SkillDto Skill { get; set; }
 
-        public DeleteModel(IPablosData pablosData)
+        public DeleteModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
         public IActionResult OnGet(int skillId)
         {
-            Skill = pablosData.GetSkillById(skillId);
+            Skill = repository.GetSkillById(skillId);
 
             if (Skill == null)
             {
@@ -33,9 +33,9 @@ namespace Portfolio.Pages.Skills
 
         public IActionResult OnPost(int skillId)
         {
-            var skill = pablosData.GetSkillById(skillId);
+            var skill = repository.GetSkillById(skillId);
 
-            pablosData.RemoveSkill(skillId);
+            repository.RemoveSkill(skillId);
 
             if (skill == null)
             {

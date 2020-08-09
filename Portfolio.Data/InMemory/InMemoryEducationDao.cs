@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Portfolio.Data.InMemory
 {
-    public class InMemoryEducationDao : IRepository<Education>
+    public class InMemoryEducationDao : IDao<Education>
     {
         private List<Education> Education { get; set; }
 

@@ -11,16 +11,16 @@ namespace Portfolio
 {
     public class DetailExperienceModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         public ExperienceDto Experience { get; set; }
-        public DetailExperienceModel(IPablosData pablosData)
+        public DetailExperienceModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
         public IActionResult OnGet(int experienceId)
         {
-            Experience = pablosData.GetExperienceById(experienceId);
+            Experience = repository.GetExperienceById(experienceId);
 
             if (Experience == null)
             {

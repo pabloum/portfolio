@@ -11,17 +11,17 @@ namespace Portfolio
 {
     public class DeleteExperienceModel : PageModel
     {
-        private readonly IPablosData pablosData;
+        private readonly IRepository repository;
 
         public ExperienceDto Experience { get; set; }
 
-        public DeleteExperienceModel(IPablosData pablosData)
+        public DeleteExperienceModel(IRepository repository)
         {
-            this.pablosData = pablosData;
+            this.repository = repository;
         }
         public IActionResult OnGet(int experienceId)
         {
-            Experience = pablosData.GetExperienceById(experienceId);
+            Experience = repository.GetExperienceById(experienceId);
 
             if (Experience == null)
             {
@@ -33,9 +33,9 @@ namespace Portfolio
 
         public IActionResult OnPost(int experienceId)
         {
-            var experience = pablosData.GetExperienceById(experienceId);            
+            var experience = repository.GetExperienceById(experienceId);            
 
-            pablosData.RemoveExperience(experienceId);
+            repository.RemoveExperience(experienceId);
 
             if (experience == null)
             {
