@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Portfolio.Entities
+namespace Portfolio.Entities.Setup
 {
     public class EntitiesProfiler : Profile
     {

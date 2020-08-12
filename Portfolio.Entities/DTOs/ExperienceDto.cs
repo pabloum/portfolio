@@ -1,8 +1,6 @@
-﻿using AutoMapper;
+﻿using Portfolio.Entities.Base;
 using Portfolio.Entities.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Portfolio.Entities.DTOs
 {

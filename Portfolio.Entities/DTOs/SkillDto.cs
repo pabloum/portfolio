@@ -1,7 +1,5 @@
-﻿using Portfolio.Entities.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Portfolio.Entities.Base;
+using Portfolio.Entities.Entities;
 
 namespace Portfolio.Entities.DTOs
 {
