@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portfolio.Api.Base;
+using Portfolio.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,17 @@ namespace Portfolio.Api.Controllers
 {
     public class SkillsController : PortfolioBaseController
     {
+        private readonly IRepository repository;
+
+        public SkillsController(IRepository repository)
+        {
+            this.repository = repository;
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("We are working on this Endpoint");
+            return Ok(repository.GetSkills());
         }
         
     }
