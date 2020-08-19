@@ -209,7 +209,11 @@ namespace Portfolio.Data
         public EducationDto GetEducationById(int id)
         {
             var education = _educationDao.Read(id);
-            return education.ToDto();
+
+            if (education == null) 
+                return null;
+            else
+                return education.ToDto();
         }
 
         /// <summary>
@@ -220,7 +224,11 @@ namespace Portfolio.Data
         public ExperienceDto GetExperienceById(int id)
         {
             var experience = _experienceDao.Read(id);
-            return experience.ToDto();
+
+            if (experience == null)
+                return null;
+            else
+                return experience.ToDto();
         }
 
         /// <summary>
@@ -230,7 +238,12 @@ namespace Portfolio.Data
         /// <returns></returns>
         public ProjectDto GetProjectById(int id)
         {
-            return _projectDao.Read(id).ToDto();
+            var project = _projectDao.Read(id);
+
+            if (project == null)
+                return null;
+            else
+                return project.ToDto();
         }
 
         /// <summary>
@@ -240,7 +253,12 @@ namespace Portfolio.Data
         /// <returns></returns>
         public SkillDto GetSkillById(int id)
         {
-            return _skillsDao.Read(id).ToDto();
+            var skill = _skillsDao.Read(id);
+
+            if (skill == null)
+                return null;
+            else
+                return skill.ToDto();
         }
 
         #endregion // Get by Id
