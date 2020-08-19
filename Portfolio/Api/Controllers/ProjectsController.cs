@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio.Api.Base;
 using Portfolio.Data;
+using Portfolio.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +21,31 @@ namespace Portfolio.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<IEnumerable<ProjectDto>> Get()
         {
-            return Ok(repository.GetPortafolio());
+            try
+            {
+                return Ok(repository.GetPortafolio());
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<ProjectDto> GetById(int id)
+        {
+            try
+            {
+                var project = repository.GetProjectById(id);
+                if (project == null) return NotFound($"The project with Id {id} was not found");
+                return Ok(project);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
         }
     }
 }

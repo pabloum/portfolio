@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio.Api.Base;
 using Portfolio.Data;
+using Portfolio.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +23,30 @@ namespace Portfolio.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(repository.GetSkills());
+            try
+            {
+                return Ok(repository.GetSkills());
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
         }
-        
+
+        [HttpGet("{id}")]
+        public ActionResult<SkillDto> GetById(int id)
+        {
+            try
+            {
+                var skill = repository.GetSkillById(id);
+                if (skill == null) return NotFound($"The skill with Id {id} was not found");
+                return Ok(skill);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
     }
 }

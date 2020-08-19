@@ -33,5 +33,20 @@ namespace Portfolio.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<ExperienceDto> GetById(int id)
+        {
+            try
+            {
+                var experience = repository.GetExperienceById(id);
+                if (experience == null) return NotFound($"The experience with Id {id} was not found");
+                return Ok(experience);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }

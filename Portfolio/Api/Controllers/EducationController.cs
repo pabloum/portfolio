@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio.Api.Base;
 using Portfolio.Data;
 using Portfolio.Entities.DTOs;
@@ -25,17 +26,16 @@ namespace Portfolio.Api.Controllers
             try
             {
                 var educations = repository.GetEducation();
-                if (educations == null) return NotFound($"No educations were found");
                 return Ok(educations);
             }
             catch (Exception)
             {
-                return BadRequest("Something went wrong");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
 
         [HttpGet("{id}")]
-        public ActionResult<EducationDto> GetEducationById(int id)
+        public ActionResult<EducationDto> GetById(int id)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Portfolio.Api.Controllers
             }
             catch (Exception)
             {
-                return BadRequest("Something went wrong");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
     }
