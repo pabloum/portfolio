@@ -48,5 +48,19 @@ namespace Portfolio.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
+
+        [HttpPost]
+        public ActionResult<EducationDto> Post(EducationDto education)
+        {
+            try
+            {
+                repository.SetEducation(education);
+                return Ok(education);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }
