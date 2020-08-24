@@ -47,5 +47,19 @@ namespace Portfolio.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
+
+        [HttpPost]
+        public IActionResult Post(ProjectDto project)
+        {
+            try
+            {
+                repository.SetProject(project);
+                return Ok("Created new project");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }

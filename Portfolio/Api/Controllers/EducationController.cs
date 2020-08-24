@@ -50,12 +50,12 @@ namespace Portfolio.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult<EducationDto> Post(EducationDto education)
+        public IActionResult Post(EducationDto education)
         {
             try
             {
                 repository.SetEducation(education);
-                return Ok(education);
+                return Ok("New education created");
             }
             catch (Exception)
             {

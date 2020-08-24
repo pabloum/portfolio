@@ -48,5 +48,19 @@ namespace Portfolio.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
+
+        [HttpPost]
+        public IActionResult Post(ExperienceDto experience)
+        {
+            try
+            {
+                repository.SetExperience(experience);
+                return Ok("Created new experience");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }

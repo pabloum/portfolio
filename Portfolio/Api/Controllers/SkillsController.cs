@@ -48,5 +48,18 @@ namespace Portfolio.Api.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Post(SkillDto skill)
+        {
+            try
+            {
+                repository.SetSkill(skill);
+                return Ok("Created new skill");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }
