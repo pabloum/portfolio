@@ -4,3 +4,4 @@
 *.dbmdl
 **/bin/**
 **/packages
+*.jfm
