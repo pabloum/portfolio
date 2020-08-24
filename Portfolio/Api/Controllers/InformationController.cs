@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portfolio.Api.Base;
+using Portfolio.Data;
+using Portfolio.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,17 @@ namespace Portfolio.Api.Controllers
 {
     public class InformationController : PortfolioBaseController
     {
-        [HttpGet]
-        public IActionResult Get()
+        private readonly IRepository repository;
+
+        public InformationController(IRepository repository)
         {
-            return Ok("We are working on this Endpoint");
+            this.repository = repository;
+        }
+        [HttpGet]
+        public ActionResult<PersonalInformation> Get()
+        {
+            var info = repository.GetInformation();
+            return Ok(info);
         }
     }
 }
