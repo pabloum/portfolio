@@ -61,5 +61,47 @@ namespace Portfolio.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
+
+        [HttpPut]
+        public IActionResult Put(SkillDto skill)
+        {
+            try
+            {
+                repository.SetSkill(skill);
+                return Ok("Skill updated");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpPatch]
+        public IActionResult Patch(SkillDto skill)
+        {
+            try
+            {
+                repository.SetSkill(skill);
+                return Ok("Skill updated");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                repository.RemoveSkill(id);
+                return Ok("Skill deleted");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }
