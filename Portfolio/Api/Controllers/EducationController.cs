@@ -62,5 +62,47 @@ namespace Portfolio.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
+
+        [HttpPut]
+        public IActionResult Put(EducationDto education)
+        {
+            try
+            {
+                repository.SetEducation(education);
+                return Ok("Education updated");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpPatch]
+        public IActionResult Patch(EducationDto education)
+        {
+            try
+            {
+                repository.SetEducation(education);
+                return Ok("Education updated");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                repository.RemoveEducation(id);
+                return Ok("Education deleted");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }

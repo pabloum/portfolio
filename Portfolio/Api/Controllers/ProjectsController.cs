@@ -61,5 +61,47 @@ namespace Portfolio.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
+
+        [HttpPut]
+        public IActionResult Put(ProjectDto project)
+        {
+            try
+            {
+                repository.SetProject(project);
+                return Ok("Project updated");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpPatch]
+        public IActionResult Patch(ProjectDto project)
+        {
+            try
+            {
+                repository.SetProject(project);
+                return Ok("Project updated");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                repository.RemoveProject(id);
+                return Ok("Project deleted");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }

@@ -62,5 +62,47 @@ namespace Portfolio.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
+
+        [HttpPut]
+        public IActionResult Put(ExperienceDto experience)
+        {
+            try
+            {
+                repository.SetExperience(experience);
+                return Ok("Experience updated");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpPatch]
+        public IActionResult Patch(ExperienceDto experience)
+        {
+            try
+            {
+                repository.SetExperience(experience);
+                return Ok("Experience updated");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                repository.RemoveExperience(id);
+                return Ok("Experience deleted");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }

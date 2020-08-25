@@ -90,7 +90,7 @@ namespace Portfolio.Api.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             try
