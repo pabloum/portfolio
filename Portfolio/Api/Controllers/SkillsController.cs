@@ -53,7 +53,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetSkill(skill);
+                repository.CreateSkill(skill);
                 return Ok("Created new skill");
             }
             catch (Exception)
@@ -67,7 +67,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetSkill(skill);
+                repository.UpdateSkill(skill);
                 return Ok("Skill updated");
             }
             catch (Exception)
@@ -81,7 +81,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetSkill(skill);
+                repository.UpdateSkill(skill);
                 return Ok("Skill updated");
             }
             catch (Exception)

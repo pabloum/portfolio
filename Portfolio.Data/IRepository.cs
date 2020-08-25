@@ -41,34 +41,34 @@ namespace Portfolio.Data
         IEnumerable<SkillDto> GetSkills();
         #endregion //Setter
 
-        #region Setters
+        #region Create
         /// <summary>
-        /// Sets an education
+        /// Create an education
         /// </summary>
         /// <param name="educationDto"></param>
         /// <returns>Returns a message which describes if an education was created or updated</returns>
-        string SetEducation(EducationDto educationDto);
+        string CreateEducation(EducationDto educationDto);
 
         /// <summary>
-        /// Sets an experience
+        /// Create an experience
         /// </summary>
         /// <param name="experienceDto"></param>
         /// <returns>Returns a message which describes if an experience was created or updated</returns>
-        string SetExperience(ExperienceDto experienceDto);
+        string CreateExperience(ExperienceDto experienceDto);
 
         /// <summary>
-        /// Sets a new Skill
+        /// Create a new Skill
         /// </summary>
         /// <param name="skillDto"></param>
         /// <returns></returns>
-        string SetSkill(SkillDto skillDto);
+        string CreateSkill(SkillDto skillDto);
 
         /// <summary>
-        /// Sets a new project
+        /// Create a new project
         /// </summary>
         /// <param name="projectDto"></param>
         /// <returns></returns>
-        string SetProject(ProjectDto projectDto);
+        string CreateProject(ProjectDto projectDto);
 
         #endregion // Setters
 

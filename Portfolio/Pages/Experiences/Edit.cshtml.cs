@@ -43,7 +43,7 @@ namespace Portfolio
         {
             if (ModelState.IsValid)
             {
-                var msg = repository.SetExperience(Experience);
+                var msg = repository.CreateExperience(Experience);
                 TempData["Message"] = msg;
 
                 return RedirectToPage("/index");

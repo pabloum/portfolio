@@ -53,7 +53,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetProject(project);
+                repository.CreateProject(project);
                 return Ok("Created new project");
             }
             catch (Exception)
@@ -67,7 +67,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetProject(project);
+                repository.UpdateProject(project);
                 return Ok("Project updated");
             }
             catch (Exception)
@@ -81,7 +81,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetProject(project);
+                repository.UpdateProject(project);
                 return Ok("Project updated");
             }
             catch (Exception)

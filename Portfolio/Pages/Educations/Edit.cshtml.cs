@@ -43,7 +43,7 @@ namespace Portfolio
         {
             if (ModelState.IsValid)
             {
-                TempData["Message"] = repository.SetEducation(Education);
+                TempData["Message"] = repository.CreateEducation(Education);
 
                 return RedirectToPage("/index");
             }

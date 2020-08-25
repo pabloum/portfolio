@@ -54,7 +54,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetEducation(education);
+                repository.CreateEducation(education);
                 return Ok("New education created");
             }
             catch (Exception)
@@ -68,7 +68,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetEducation(education);
+                repository.UpdateEducation(education);
                 return Ok("Education updated");
             }
             catch (Exception)
@@ -82,7 +82,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetEducation(education);
+                repository.UpdateEducation(education);
                 return Ok("Education updated");
             }
             catch (Exception)

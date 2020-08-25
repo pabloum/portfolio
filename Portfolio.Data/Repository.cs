@@ -109,7 +109,7 @@ namespace Portfolio.Data
 
         #region Create
 
-        public string SetEducation(EducationDto educationDto)
+        public string CreateEducation(EducationDto educationDto)
         {
             string returnMessage;
 
@@ -131,7 +131,7 @@ namespace Portfolio.Data
             return returnMessage;
         }
 
-        public string SetExperience(ExperienceDto experienceDto)
+        public string CreateExperience(ExperienceDto experienceDto)
         {
             string returnMessage;
 
@@ -153,7 +153,7 @@ namespace Portfolio.Data
             return returnMessage;
         }
 
-        public string SetProject(ProjectDto projectDto)
+        public string CreateProject(ProjectDto projectDto)
         {
             string returnMessage;
 
@@ -175,7 +175,7 @@ namespace Portfolio.Data
             return returnMessage;
         }
 
-        public string SetSkill(SkillDto skillDto)
+        public string CreateSkill(SkillDto skillDto)
         {
             string returnMessage;
 

@@ -44,7 +44,7 @@ namespace Portfolio.Pages.Projects
         {
             if (ModelState.IsValid)
             {
-                TempData["Message"] = repository.SetProject(Project);
+                TempData["Message"] = repository.CreateProject(Project);
 
                 return RedirectToPage("/index");
             }

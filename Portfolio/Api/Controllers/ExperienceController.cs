@@ -54,7 +54,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetExperience(experience);
+                repository.CreateExperience(experience);
                 return Ok("Created new experience");
             }
             catch (Exception)
@@ -68,7 +68,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetExperience(experience);
+                repository.UpdateExperience(experience);
                 return Ok("Experience updated");
             }
             catch (Exception)
@@ -82,7 +82,7 @@ namespace Portfolio.Api.Controllers
         {
             try
             {
-                repository.SetExperience(experience);
+                repository.UpdateExperience(experience);
                 return Ok("Experience updated");
             }
             catch (Exception)

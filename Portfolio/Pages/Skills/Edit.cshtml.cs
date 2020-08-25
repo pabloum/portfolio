@@ -49,7 +49,7 @@ namespace Portfolio.Pages.Skills
         {
             if (ModelState.IsValid)
             {
-                repository.SetSkill(Skill);
+                repository.CreateSkill(Skill);
                 return RedirectToPage("/index");
             }
 
