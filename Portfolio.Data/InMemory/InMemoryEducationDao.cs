@@ -29,10 +29,11 @@ namespace Portfolio.Data.InMemory
             return 0;
         }
 
-        public void Create(Education education)
+        public Education Create(Education education)
         {
             education.Id = Education.Max(e => e.Id) + 1;
             Education.Add(education);
+            return education;
         }
 
         public Education Read(int id)
@@ -40,7 +41,7 @@ namespace Portfolio.Data.InMemory
             return Education.Where(e => e.Id == id).FirstOrDefault();
         }
 
-        public void Update(Education education)
+        public Education Update(Education education)
         {
             var record = Education.SingleOrDefault(r => r.Id == education.Id);
 
@@ -48,6 +49,8 @@ namespace Portfolio.Data.InMemory
             {
                 Education.ReplaceWith(record,education);
             }
+
+            return record;
         }
 
         public void Delete(Education education)

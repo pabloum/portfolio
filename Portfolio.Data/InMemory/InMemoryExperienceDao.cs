@@ -30,10 +30,11 @@ namespace Portfolio.Data.InMemory
             return Experience;
         }
 
-        public void Create(Experience experience)
+        public Experience Create(Experience experience)
         {
             experience.Id = Experience.Max(e => e.Id) + 1;
             Experience.Add(experience);
+            return experience;
         }
 
         public Experience Read(int id)
@@ -41,13 +42,14 @@ namespace Portfolio.Data.InMemory
             return Experience.Where(e => e.Id == id).FirstOrDefault();
         }
 
-        public void Update(Experience experience)
+        public Experience Update(Experience experience)
         {
             var record = Experience.SingleOrDefault(r => r.Id == experience.Id);
             if (record != null) 
             {
                 Experience.ReplaceWith(record, experience);
             }
+            return record;
         }
 
         public void Delete(Experience experience)

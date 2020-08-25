@@ -20,7 +20,7 @@ namespace Portfolio.Data
         /// Creates an entity
         /// </summary>
         /// <param name="entity"></param>
-        void Create(T entity);
+        T Create(T entity);
 
         /// <summary>
         /// Gets an record by ID
@@ -33,7 +33,7 @@ namespace Portfolio.Data
         /// Updates an entity
         /// </summary>
         /// <param name="entity"></param>
-        void Update(T entity);
+        T Update(T entity);
 
         /// <summary>
         /// Deletes an entity

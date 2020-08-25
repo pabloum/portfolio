@@ -24,13 +24,14 @@ namespace Portfolio.Data.dbData
             }
         }
 
-        public void Create(Skill skill)
+        public Skill Create(Skill skill)
         {
             using (var context = new PortfolioDbContext(_db))
             {
                 skill.Id = context.Skills.Max(s => s.Id) + 1;
                 context.Skills.Add(skill);
                 context.SaveChanges();
+                return skill;
             }
         }
 
@@ -62,13 +63,14 @@ namespace Portfolio.Data.dbData
             }
         }
 
-        public void Update(Skill skill)
+        public Skill Update(Skill skill)
         {
             using (var context = new PortfolioDbContext(_db))
             {
                 var entity = context.Skills.Attach(skill);
                 entity.State = EntityState.Modified;
                 context.SaveChanges();
+                return entity.Entity;
             }
         }
     }

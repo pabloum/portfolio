@@ -24,13 +24,14 @@ namespace Portfolio.Data.dbData
             }
         }
 
-        public void Create(Experience experience)
+        public Experience Create(Experience experience)
         {
             using (var context = new PortfolioDbContext(_db) )
             {
                 experience.Id = context.Experience.Max(e => e.Id) + 1;
                 context.Experience.Add(experience);
                 context.SaveChanges();
+                return experience;
             }
         }
 
@@ -71,13 +72,14 @@ namespace Portfolio.Data.dbData
             }
         }
 
-        public void Update(Experience experience)
+        public Experience Update(Experience experience)
         {
             using (var context = new PortfolioDbContext(_db))
             {
                 var entity = context.Experience.Attach(experience);
                 entity.State = EntityState.Modified;
                 context.SaveChanges();
+                return entity.Entity;
             }
         }
     }

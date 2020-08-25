@@ -30,10 +30,11 @@ namespace Portfolio.Data.InMemory
             };
         }
 
-        public void Create(Skill skill)
+        public Skill Create(Skill skill)
         {
             skill.Id = Skills.Max(s => s.Id) + 1;
             Skills.Add(skill);
+            return skill;
         }
 
         public Skill Read(int id)
@@ -41,7 +42,7 @@ namespace Portfolio.Data.InMemory
             return Skills.Where(s => s.Id == id).FirstOrDefault();
         }
 
-        public void Update(Skill skill)
+        public Skill Update(Skill skill)
         {
             var result = Skills.Where(s => s.Id == skill.Id).FirstOrDefault();
 
@@ -49,6 +50,8 @@ namespace Portfolio.Data.InMemory
             {
                 Skills.ReplaceWith(result, skill);
             }
+
+            return result;
         }
 
         public void Delete(Skill skill)

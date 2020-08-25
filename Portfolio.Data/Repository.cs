@@ -107,7 +107,7 @@ namespace Portfolio.Data
 
         #endregion //Getters
 
-        #region Setters
+        #region Create
 
         public string SetEducation(EducationDto educationDto)
         {
@@ -197,7 +197,55 @@ namespace Portfolio.Data
             return returnMessage;
         }
 
-        #endregion //Setters
+        #endregion //Create
+
+        #region Update
+
+        public EducationDto UpdateEducation(EducationDto educationDto)
+        {
+            if (educationDto.Id <= 0) return null;
+
+            var education = educationDto.ToEntity();
+            var updated = _educationDao.Update(education);
+            _educationDao.Commit();
+
+            return updated.ToDto();
+        }
+
+        public ExperienceDto UpdateExperience(ExperienceDto experienceDto)
+        {
+            if (experienceDto.Id <= 0) return null;
+
+            var experience = experienceDto.ToEntity();
+            var updated = _experienceDao.Update(experience);
+            _experienceDao.Commit();
+
+            return updated.ToDto();
+        }
+
+        public ProjectDto UpdateProject(ProjectDto projectDto)
+        {
+            if (projectDto.Id <= 0) return null;
+
+            var project = projectDto.ToEntity();
+            var updated = _projectDao.Update(project);
+            _projectDao.Commit();
+
+            return updated.ToDto();
+        }
+
+        public SkillDto UpdateSkill(SkillDto skillDto)
+        {
+            if (skillDto.Id <= 0) return null;
+
+            var skill = skillDto.ToEntity();
+            var updated = _skillsDao.Update(skill);
+            _skillsDao.Commit();
+
+            return updated.ToDto();
+        }
+
+        #endregion //Update
 
         #region Get by Id
 

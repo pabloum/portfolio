@@ -24,10 +24,11 @@ namespace Portfolio.Data.InMemory
             return 0;
         }
 
-        public void Create(Project project)
+        public Project Create(Project project)
         {
             project.Id = Projects.Max(p => p.Id) + 1;
             Projects.Add(project);
+            return project;
         }
 
         public Project Read(int id)
@@ -35,7 +36,7 @@ namespace Portfolio.Data.InMemory
             return Projects.Where(p => p.Id == id).FirstOrDefault();
         }
 
-        public void Update(Project project)
+        public Project Update(Project project)
         {
             var result = Projects.Where(p => p.Id == project.Id).FirstOrDefault();
 
@@ -43,6 +44,8 @@ namespace Portfolio.Data.InMemory
             {
                 Projects.ReplaceWith(result, project);
             }
+
+            return result;
         }
 
         public void Delete(Project project)

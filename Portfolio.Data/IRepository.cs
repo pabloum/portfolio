@@ -72,8 +72,17 @@ namespace Portfolio.Data
 
         #endregion // Setters
 
+        #region Update
+
+        EducationDto UpdateEducation(EducationDto educationDto);
+        ExperienceDto UpdateExperience(ExperienceDto experienceDto);
+        ProjectDto UpdateProject(ProjectDto projectDto);
+        SkillDto UpdateSkill(SkillDto skillDto);
+
+        #endregion
+
         #region GetById
-        
+
         EducationDto GetEducationById(int id);
         ExperienceDto GetExperienceById(int id);
         ProjectDto GetProjectById(int id);

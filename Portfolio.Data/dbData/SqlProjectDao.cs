@@ -24,13 +24,14 @@ namespace Portfolio.Data.dbData
             }
         }
 
-        public void Create(Project project)
+        public Project Create(Project project)
         {
             using (var context = new PortfolioDbContext(_db))
             {
                 project.Id = context.Projects.Max(p => p.Id) + 1;
                 context.Projects.Add(project);
                 context.SaveChanges();
+                return project;
             }
         }
 
@@ -62,13 +63,14 @@ namespace Portfolio.Data.dbData
             }
         }
 
-        public void Update(Project project)
+        public Project Update(Project project)
         {
             using (var context = new PortfolioDbContext(_db))
             {
                 var entity = context.Projects.Attach(project);
                 entity.State = EntityState.Modified;
                 context.SaveChanges();
+                return entity.Entity;
             }
         }
     }
