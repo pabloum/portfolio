@@ -49,7 +49,7 @@ namespace Portfolio.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(SkillDto skill)
+        public ActionResult<SkillDto> Post(SkillDto skill)
         {
             try
             {

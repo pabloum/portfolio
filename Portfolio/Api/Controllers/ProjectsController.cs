@@ -49,7 +49,7 @@ namespace Portfolio.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(ProjectDto project)
+        public ActionResult<ProjectDto> Post(ProjectDto project)
         {
             try
             {

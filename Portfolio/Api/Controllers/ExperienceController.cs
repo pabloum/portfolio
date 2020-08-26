@@ -50,7 +50,7 @@ namespace Portfolio.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(ExperienceDto experience)
+        public ActionResult<ExperienceDto> Post(ExperienceDto experience)
         {
             try
             {
