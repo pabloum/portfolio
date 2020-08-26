@@ -55,7 +55,7 @@ namespace Portfolio.Api.Controllers
             try
             {
                 repository.CreateExperience(experience);
-                return Ok("Created new experience");
+                return CreatedAtAction("GetExperience", experience);
             }
             catch (Exception)
             {

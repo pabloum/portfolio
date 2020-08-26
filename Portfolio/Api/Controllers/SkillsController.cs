@@ -54,7 +54,7 @@ namespace Portfolio.Api.Controllers
             try
             {
                 repository.CreateSkill(skill);
-                return Ok("Created new skill");
+                return CreatedAtAction("GetSkill", skill);
             }
             catch (Exception)
             {

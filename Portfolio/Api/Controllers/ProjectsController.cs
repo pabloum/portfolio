@@ -54,7 +54,7 @@ namespace Portfolio.Api.Controllers
             try
             {
                 repository.CreateProject(project);
-                return Ok("Created new project");
+                return CreatedAtAction("GetProjects", project);
             }
             catch (Exception)
             {
