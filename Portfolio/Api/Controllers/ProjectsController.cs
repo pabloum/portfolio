@@ -23,85 +23,43 @@ namespace Portfolio.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<ProjectDto>> Get()
         {
-            try
-            {
-                return Ok(repository.GetPortafolio());
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            return Ok(repository.GetPortafolio());
         }
 
         [HttpGet("{id}")]
         public ActionResult<ProjectDto> GetById(int id)
         {
-            try
-            {
-                var project = repository.GetProjectById(id);
-                if (project == null) return NotFound($"The project with Id {id} was not found");
-                return Ok(project);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            var project = repository.GetProjectById(id);
+            if (project == null) return NotFound($"The project with Id {id} was not found");
+            return Ok(project);
         }
 
         [HttpPost]
         public ActionResult<ProjectDto> Post(ProjectDto project)
         {
-            try
-            {
-                repository.CreateProject(project);
-                return CreatedAtAction("GetProjects", project);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            repository.CreateProject(project);
+            return CreatedAtAction("GetProjects", project);
         }
 
         [HttpPut]
         public IActionResult Put(ProjectDto project)
         {
-            try
-            {
-                repository.UpdateProject(project);
-                return Ok("Project updated");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            repository.UpdateProject(project);
+            return Ok("Project updated");
         }
 
         [HttpPatch]
         public IActionResult Patch(ProjectDto project)
         {
-            try
-            {
-                repository.UpdateProject(project);
-                return Ok("Project updated");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            repository.UpdateProject(project);
+            return Ok("Project updated");
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            try
-            {
-                repository.RemoveProject(id);
-                return Ok("Project deleted");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            repository.RemoveProject(id);
+            return Ok("Project deleted");
         }
     }
 }

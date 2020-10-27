@@ -18,6 +18,7 @@ namespace Portfolio.Api.Controllers
         {
             this.repository = repository;
         }
+        
         [HttpGet]
         public ActionResult<PersonalInformation> Get()
         {

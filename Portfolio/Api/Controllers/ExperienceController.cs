@@ -21,88 +21,45 @@ namespace Portfolio.Api.Controllers
 
         [HttpGet]
         public ActionResult<IEnumerable<ExperienceDto>> Get()
-        {
-            try
-            {
-                var experiences = repository.GetExperience();
-
-                return Ok(experiences);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+        {            
+            var experiences = repository.GetExperience();
+            return Ok(experiences);
         }
 
         [HttpGet("{id}")]
         public ActionResult<ExperienceDto> GetById(int id)
-        {
-            try
-            {
-                var experience = repository.GetExperienceById(id);
-                if (experience == null) return NotFound($"The experience with Id {id} was not found");
-                return Ok(experience);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+        {            
+            var experience = repository.GetExperienceById(id);
+            if (experience == null) return NotFound($"The experience with Id {id} was not found");
+            return Ok(experience);
         }
 
         [HttpPost]
         public ActionResult<ExperienceDto> Post(ExperienceDto experience)
-        {
-            try
-            {
-                repository.CreateExperience(experience);
-                return CreatedAtAction("GetExperience", experience);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+        {            
+            repository.CreateExperience(experience);
+            return CreatedAtAction("GetExperience", experience);
         }
 
         [HttpPut]
         public IActionResult Put(ExperienceDto experience)
-        {
-            try
-            {
-                repository.UpdateExperience(experience);
-                return Ok("Experience updated");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+        {            
+            repository.UpdateExperience(experience);
+            return Ok("Experience updated");
         }
 
         [HttpPatch]
         public IActionResult Patch(ExperienceDto experience)
-        {
-            try
-            {
-                repository.UpdateExperience(experience);
-                return Ok("Experience updated");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+        {            
+            repository.UpdateExperience(experience);
+            return Ok("Experience updated");
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
-        {
-            try
-            {
-                repository.RemoveExperience(id);
-                return Ok("Experience deleted");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+        {            
+            repository.RemoveExperience(id);
+            return Ok("Experience deleted");
         }
     }
 }

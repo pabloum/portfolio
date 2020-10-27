@@ -23,85 +23,43 @@ namespace Portfolio.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            try
-            {
-                return Ok(repository.GetSkills());
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            return Ok(repository.GetSkills());
         }
 
         [HttpGet("{id}")]
         public ActionResult<SkillDto> GetById(int id)
         {
-            try
-            {
-                var skill = repository.GetSkillById(id);
-                if (skill == null) return NotFound($"The skill with Id {id} was not found");
-                return Ok(skill);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            var skill = repository.GetSkillById(id);
+            if (skill == null) return NotFound($"The skill with Id {id} was not found");
+            return Ok(skill);
         }
 
         [HttpPost]
         public ActionResult<SkillDto> Post(SkillDto skill)
         {
-            try
-            {
-                repository.CreateSkill(skill);
-                return CreatedAtAction("GetSkill", skill);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            repository.CreateSkill(skill);
+            return CreatedAtAction("GetSkill", skill);
         }
 
         [HttpPut]
         public IActionResult Put(SkillDto skill)
         {
-            try
-            {
-                repository.UpdateSkill(skill);
-                return Ok("Skill updated");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            repository.UpdateSkill(skill);
+            return Ok("Skill updated");
         }
 
         [HttpPatch]
         public IActionResult Patch(SkillDto skill)
         {
-            try
-            {
-                repository.UpdateSkill(skill);
-                return Ok("Skill updated");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            repository.UpdateSkill(skill);
+            return Ok("Skill updated");
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            try
-            {
-                repository.RemoveSkill(id);
-                return Ok("Skill deleted");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
+            repository.RemoveSkill(id);
+            return Ok("Skill deleted");
         }
     }
 }
