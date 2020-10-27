@@ -82,6 +82,8 @@ namespace Portfolio
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
+
             app.UseRouting();
 
             app.UseAuthorization();
