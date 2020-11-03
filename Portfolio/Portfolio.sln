@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Entities", "..\Po
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database1", "..\Database1\Database1.sqlproj", "{84E9474E-0F8B-4B0C-AECB-FF5C3C444018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "..\Services\Services.csproj", "{670F05BC-6EDE-43F5-BBEE-13FA966E8131}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio.Services", "..\Services\Portfolio.Services.csproj", "{670F05BC-6EDE-43F5-BBEE-13FA966E8131}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "..\Support\Support.csproj", "{84EBB6D1-FF8A-4F27-98E0-829800B3ECEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Support", "..\Support\Portfolio.Support.csproj", "{84EBB6D1-FF8A-4F27-98E0-829800B3ECEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
