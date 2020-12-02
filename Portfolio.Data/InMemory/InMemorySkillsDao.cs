@@ -11,24 +11,30 @@ namespace Portfolio.Data.InMemory
     public class InMemorySkillsDao : IDao<Skill>
     {
         private List<Skill> Skills { get; set; }
-
+        public SkillFactory skillFactory { get; set; }
         public InMemorySkillsDao()
         {
+            var technicalSkillFactory = new TechnicalSkillFactory();
+            var languageSkillFactory = new LanguageSkillFactory();
+            var softSkillFactory = new SoftSkillFactory();
+
             Skills = new List<Skill>
             {
-                SkillFactory.CreateSkill("C/C++",         70, SkillType.Technical),
-                SkillFactory.CreateSkill("C#",            70, SkillType.Technical),
-                SkillFactory.CreateSkill("Ruby",          70, SkillType.Technical),
-                SkillFactory.CreateSkill(".Net Core",     70, SkillType.Technical),
-                SkillFactory.CreateSkill("Ruby on Rails", 70, SkillType.Technical),
+                technicalSkillFactory.GetSkill("C/C++", 70),
+                technicalSkillFactory.GetSkill("C#", 70),
+                technicalSkillFactory.GetSkill("Ruby", 70),
+                technicalSkillFactory.GetSkill(".Net Core", 70),
+                technicalSkillFactory.GetSkill("Ruby on Rails", 70),
 
-                SkillFactory.CreateSkill("English", 90, SkillType.Language),
-                SkillFactory.CreateSkill("French",  78, SkillType.Language),
-                SkillFactory.CreateSkill("German",  60, SkillType.Language),
-                SkillFactory.CreateSkill("Spanish", 99, SkillType.Language),
+                languageSkillFactory.GetSkill("English", 90),
+                languageSkillFactory.GetSkill("French", 78),
+                languageSkillFactory.GetSkill("German", 60),
+                languageSkillFactory.GetSkill("English", 99),
 
-                SkillFactory.CreateSkill("Responsible", 99, SkillType.Soft),
-                SkillFactory.CreateSkill("Disciplined", 99, SkillType.Soft)
+                softSkillFactory.GetSkill("Responsible", 99),
+                softSkillFactory.GetSkill("Disciplined", 99),
+                softSkillFactory.GetSkill("Honesty", 99),
+                softSkillFactory.GetSkill("Hardworking", 99)
             };
         }
 

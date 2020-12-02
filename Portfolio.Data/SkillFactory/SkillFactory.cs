@@ -3,13 +3,40 @@ using Portfolio.Entities.Entities;
 
 namespace Portfolio.Data
 {
-    public static class SkillFactory
+    public abstract class SkillFactory
     {
-        private static int IdCounter = 0;
+        protected static int IdCounter = 0;
 
-        public static Skill CreateSkill(string name, int percentage, SkillType type)
+        protected abstract Skill CreateSkill(string name, int percentage);
+
+        public Skill GetSkill(string name, int percentage)
         {
-            return new Skill { Id = ++IdCounter, Name = name, Percentage = percentage, Category = type };
+            var skill = CreateSkill(name, percentage);
+            return skill;
+        }
+    }
+
+    public class TechnicalSkillFactory : SkillFactory
+    {
+        protected override Skill CreateSkill(string name, int percentage)
+        {
+            return new Skill { Id = ++IdCounter, Name = name, Percentage = percentage, Category = SkillType.Technical };
+        }
+    }
+
+    public class LanguageSkillFactory : SkillFactory
+    {
+        protected override Skill CreateSkill(string name, int percentage)
+        {
+            return new Skill { Id = ++IdCounter, Name = name, Percentage = percentage, Category = SkillType.Language };
+        }
+    }
+
+    public class SoftSkillFactory : SkillFactory
+    {
+        protected override Skill CreateSkill(string name, int percentage)
+        {
+            return new Skill { Id = ++IdCounter, Name = name, Percentage = percentage, Category = SkillType.Soft };
         }
     }
 }
