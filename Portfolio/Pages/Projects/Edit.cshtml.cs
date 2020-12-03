@@ -11,12 +11,12 @@ namespace Portfolio.Pages.Projects
 {
     public class EditModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
         [BindProperty]
         public ProjectDto Project { get; set; }
 
-        public EditModel(IRepository repository)
+        public EditModel(IOldRepository repository)
         {
             this.repository = repository;
         }

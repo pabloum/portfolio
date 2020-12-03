@@ -11,14 +11,14 @@ namespace Portfolio.Pages.Skills
 {
     public class EditModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
         private readonly IHtmlHelper htmlHelper;
 
         [BindProperty]
         public SkillDto Skill { get; set; }
         public IEnumerable<SelectListItem> SkillTypes { get; set; }
 
-        public EditModel(IRepository repository, IHtmlHelper htmlHelper)
+        public EditModel(IOldRepository repository, IHtmlHelper htmlHelper)
         {
             this.repository = repository;
             this.htmlHelper = htmlHelper;

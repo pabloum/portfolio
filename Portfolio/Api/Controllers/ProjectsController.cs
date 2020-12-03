@@ -13,9 +13,9 @@ namespace Portfolio.Api.Controllers
 {
     public class ProjectsController : PortfolioBaseController
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
-        public ProjectsController(IRepository repository)
+        public ProjectsController(IOldRepository repository)
         {
             this.repository = repository;
         }

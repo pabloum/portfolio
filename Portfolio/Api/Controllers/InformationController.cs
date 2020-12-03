@@ -12,9 +12,9 @@ namespace Portfolio.Api.Controllers
 {
     public class InformationController : PortfolioBaseController
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
-        public InformationController(IRepository repository)
+        public InformationController(IOldRepository repository)
         {
             this.repository = repository;
         }

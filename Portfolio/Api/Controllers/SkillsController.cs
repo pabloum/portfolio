@@ -13,9 +13,9 @@ namespace Portfolio.Api.Controllers
 {
     public class SkillsController : PortfolioBaseController
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
-        public SkillsController(IRepository repository)
+        public SkillsController(IOldRepository repository)
         {
             this.repository = repository;
         }

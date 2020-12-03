@@ -11,11 +11,11 @@ namespace Portfolio.Pages.Projects
 {
     public class DetailModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
         public ProjectDto Project { get; set; }
 
-        public DetailModel(IRepository repository)
+        public DetailModel(IOldRepository repository)
         {
             this.repository = repository;
         }

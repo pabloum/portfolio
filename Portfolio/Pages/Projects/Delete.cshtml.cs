@@ -11,11 +11,11 @@ namespace Portfolio.Pages.Projects
 {
     public class DeleteModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
         public ProjectDto Project { get; set; }
 
-        public DeleteModel(IRepository repository)
+        public DeleteModel(IOldRepository repository)
         {
             this.repository = repository;
         }

@@ -11,10 +11,10 @@ namespace Portfolio
 {
     public class DeleteEducationModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
         public EducationDto Education { get; set; }
 
-        public DeleteEducationModel(IRepository repository)
+        public DeleteEducationModel(IOldRepository repository)
         {
             this.repository = repository;
         }

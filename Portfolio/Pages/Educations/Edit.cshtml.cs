@@ -11,12 +11,12 @@ namespace Portfolio
 {
     public class EditEducationModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
         [BindProperty]
         public EducationDto Education { get; set; }
 
-        public EditEducationModel(IRepository repository)
+        public EditEducationModel(IOldRepository repository)
         {
             this.repository = repository;
         }

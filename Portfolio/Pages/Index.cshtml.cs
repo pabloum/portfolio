@@ -15,7 +15,7 @@ namespace Portfolio.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
         private readonly IHtmlHelper htmlHelper;
 
         public PersonalInformation Information { get; set; }
@@ -25,7 +25,7 @@ namespace Portfolio.Pages
         public IEnumerable<ProjectDto> Portafolio { get; set; }
         public IEnumerable<SelectListItem> SkillTypes { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IRepository repository, IHtmlHelper htmlHelper)
+        public IndexModel(ILogger<IndexModel> logger, IOldRepository repository, IHtmlHelper htmlHelper)
         {
             _logger = logger;
             this.repository = repository;

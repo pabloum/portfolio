@@ -11,10 +11,10 @@ namespace Portfolio
 {
     public class DetailExperienceModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
         public ExperienceDto Experience { get; set; }
-        public DetailExperienceModel(IRepository repository)
+        public DetailExperienceModel(IOldRepository repository)
         {
             this.repository = repository;
         }

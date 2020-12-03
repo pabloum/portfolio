@@ -11,11 +11,11 @@ namespace Portfolio
 {
     public class DeleteExperienceModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
         public ExperienceDto Experience { get; set; }
 
-        public DeleteExperienceModel(IRepository repository)
+        public DeleteExperienceModel(IOldRepository repository)
         {
             this.repository = repository;
         }

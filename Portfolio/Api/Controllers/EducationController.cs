@@ -1,21 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Portfolio.Api.Base;
 using Portfolio.Data;
 using Portfolio.Entities.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Portfolio.Api.Controllers
 {
     public class EducationController : PortfolioBaseController
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
-        public EducationController(IRepository repository)
+        public EducationController(IOldRepository repository)
         {
             this.repository = repository;
         }

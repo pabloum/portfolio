@@ -39,8 +39,20 @@ namespace Portfolio
 
             services.AddAutoMapper(typeof(Startup));
 
-            //AddInMemoryDaos(services);  // Uncomment this to work with In Memory data
-            AddSqlDaos(services);     // Uncomment this for working with data in SQL Server
+            var typeOfData = Configuration.GetValue<string>("Data");
+
+            if (typeOfData == "InMemory")
+            {
+                AddInMemoryDaos(services);
+            }
+            else if (typeOfData == "Sql")
+            {
+                AddSqlDaos(services);
+            }
+            else 
+            {
+                throw new Exception("No type of data specified");
+            }
 
             services.AddRazorPages();
 
@@ -48,7 +60,7 @@ namespace Portfolio
         }
         public void AddSqlDaos(IServiceCollection services)
         {
-            services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IOldRepository, OldRepository>();
 
             services.AddScoped<IDao<Education>, SqlEducationDao>();
             services.AddScoped<IDao<Experience>, SqlExperienceDao>();
@@ -58,13 +70,14 @@ namespace Portfolio
 
         public void AddInMemoryDaos(IServiceCollection services)
         {
-            services.AddSingleton<IRepository, Repository>();
+            services.AddSingleton<IOldRepository, OldRepository>();
 
             services.AddSingleton<IDao<Education>, InMemoryEducationDao>();
             services.AddSingleton<IDao<Experience>, InMemoryExperienceDao>();
             services.AddSingleton<IDao<Project>, InMemoryProjectDao>();
             services.AddSingleton<IDao<Skill>, InMemorySkillsDao>();
         }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

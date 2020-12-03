@@ -11,12 +11,12 @@ namespace Portfolio
 {
     public class EditExperienceModel : PageModel
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
         [BindProperty]
         public ExperienceDto Experience { get; set; }
 
-        public EditExperienceModel(IRepository repository)
+        public EditExperienceModel(IOldRepository repository)
         {
             this.repository = repository;
         }

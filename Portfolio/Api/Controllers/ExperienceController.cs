@@ -12,9 +12,9 @@ namespace Portfolio.Api.Controllers
 {
     public class ExperienceController : PortfolioBaseController
     {
-        private readonly IRepository repository;
+        private readonly IOldRepository repository;
 
-        public ExperienceController(IRepository repository)
+        public ExperienceController(IOldRepository repository)
         {
             this.repository = repository;
         }
