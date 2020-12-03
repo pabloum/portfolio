@@ -2,59 +2,15 @@
 using Portfolio.Api.Base;
 using Portfolio.Data;
 using Portfolio.Entities.DTOs;
+using Portfolio.Entities.Entities;
+using Services;
 
 namespace Portfolio.Api.Controllers
 {
-    public class EducationController : PortfolioBaseController
+    public class EducationController : PortfolioGenericController<Education>
     {
-        private readonly IOldRepository repository;
-
-        public EducationController(IOldRepository repository)
+        public EducationController(IBaseService<Education> service) : base(service)
         {
-            this.repository = repository;
-        }
-
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var educations = repository.GetEducation();
-            return Ok(educations);
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<EducationDto> GetById(int id)
-        {
-            var education = repository.GetEducationById(id);
-            if (education == null) return NotFound($"The education with Id {id} was not found");
-            return Ok(education);
-        }
-
-        [HttpPost]
-        public ActionResult<EducationDto> Post(EducationDto education)
-        {
-            repository.CreateEducation(education);
-            return CreatedAtAction("GetEducation", education);
-        }
-
-        [HttpPut]
-        public IActionResult Put(EducationDto education)
-        {
-            repository.UpdateEducation(education);
-            return Ok("Education updated");
-        }
-
-        [HttpPatch]
-        public IActionResult Patch(EducationDto education)
-        {
-            repository.UpdateEducation(education);
-            return Ok("Education updated");
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {            
-            repository.RemoveEducation(id);
-            return Ok("Education deleted");
         }
     }
 }

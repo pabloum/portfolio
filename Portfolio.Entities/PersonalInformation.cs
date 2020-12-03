@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Portfolio.Entities.Base;
+using System;
 using System.Collections.Generic;
 
 namespace Portfolio.Entities
 {
-    public class PersonalInformation
+    public class PersonalInformation : EntityBase
     {
         public string Name { get; set; }
         public DateTime Birthday { get; set; }

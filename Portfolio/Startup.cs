@@ -14,6 +14,8 @@ using Portfolio.Entities.Entities;
 using Portfolio.Data;
 using Portfolio.Data.dbData;
 using Portfolio.Data.InMemory;
+using Services;
+using Portfolio.Services.Services;
 
 namespace Portfolio
 {
@@ -54,6 +56,8 @@ namespace Portfolio
                 throw new Exception("No type of data specified");
             }
 
+            AddServices(services);
+
             services.AddRazorPages();
 
             services.AddMvc(opt => opt.EnableEndpointRouting = false);
@@ -66,6 +70,11 @@ namespace Portfolio
             services.AddScoped<IDao<Experience>, SqlExperienceDao>();
             services.AddScoped<IDao<Project>, SqlProjectDao>();
             services.AddScoped<IDao<Skill>, SqlSkillsDao>();
+
+            services.AddScoped<IRepository<Education>, EducationRepository>();
+            services.AddScoped<IRepository<Experience>, ExperienceRepository>();
+            services.AddScoped<IRepository<Project>, ProjectRepository>();
+            services.AddScoped<IRepository<Skill>, SkillRepository>();
         }
 
         public void AddInMemoryDaos(IServiceCollection services)
@@ -76,6 +85,14 @@ namespace Portfolio
             services.AddSingleton<IDao<Experience>, InMemoryExperienceDao>();
             services.AddSingleton<IDao<Project>, InMemoryProjectDao>();
             services.AddSingleton<IDao<Skill>, InMemorySkillsDao>();
+        }
+
+        public void AddServices(IServiceCollection services)
+        {
+            services.AddScoped<IBaseService<Education>, EducationService>();
+            services.AddScoped<IBaseService<Experience>, ExperienceService>();
+            services.AddScoped<IBaseService<Project>, ProjectsService>();
+            services.AddScoped<IBaseService<Skill>, SkillService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,17 +1,12 @@
 ﻿using Portfolio.Data;
 using Portfolio.Entities.Base;
-using System;
 using System.Collections.Generic;
 
 namespace Services
 {
-    interface IBaseService<T> where T : EntityBase
-    {
-    }
-
     public class BaseService<T> : IBaseService<T> where T : EntityBase
     {
-        private IRepository<T> _repository;
+        protected IRepository<T> _repository;
 
         public BaseService(IRepository<T> repository)
         {

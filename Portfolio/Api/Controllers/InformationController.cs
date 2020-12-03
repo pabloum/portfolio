@@ -2,27 +2,22 @@
 using Portfolio.Api.Base;
 using Portfolio.Data;
 using Portfolio.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Portfolio.Api.Controllers
 {
     public class InformationController : PortfolioBaseController
     {
-        private readonly IOldRepository repository;
+        private readonly IOldRepository _service;
 
-        public InformationController(IOldRepository repository)
+        public InformationController(IOldRepository service)
         {
-            this.repository = repository;
+            _service = service;
         }
         
         [HttpGet]
         public ActionResult<PersonalInformation> Get()
         {
-            var info = repository.GetInformation();
+            var info = _service.GetInformation();
             return Ok(info);
         }
     }

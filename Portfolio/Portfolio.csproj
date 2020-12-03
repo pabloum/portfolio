@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Portfolio.Data\Portfolio.Data.csproj" />
+    <ProjectReference Include="..\Services\Portfolio.Services.csproj" />
   </ItemGroup>
 
 
