@@ -6,7 +6,6 @@ namespace Portfolio.Entities.Entities
 {
     public class Education : EntityBase
     {
-        public int Id { get; set; }
         public string University { get; set; }
         public string Title { get; set; }
         public DateTime DateBegining { get; set; }

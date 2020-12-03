@@ -6,6 +6,7 @@ namespace Portfolio.Entities.Base
     public abstract class EntityBase
     {
         protected readonly IMapper _mapper;
+        public int Id { get; set; }
 
         public EntityBase()
         {

@@ -6,7 +6,6 @@ namespace Portfolio.Entities.Entities
 {
     public class Experience : EntityBase
     {
-        public int Id { get; set; }
         public string Company { get; set; }
         public string Position { get; set; }
         public string MainFunctions { get; set; }
