@@ -85,6 +85,11 @@ namespace Portfolio
             services.AddSingleton<IDao<Experience>, InMemoryExperienceDao>();
             services.AddSingleton<IDao<Project>, InMemoryProjectDao>();
             services.AddSingleton<IDao<Skill>, InMemorySkillsDao>();
+
+            services.AddSingleton<IRepository<Education>, InMemoryEducationRepository>();
+            services.AddSingleton<IRepository<Experience>, InMemoryExperienceRepository>();
+            services.AddSingleton<IRepository<Project>, InMemoryProjectRepository>();
+            services.AddSingleton<IRepository<Skill>, InMemorySkillRepository>();
         }
 
         public void AddServices(IServiceCollection services)

@@ -1,39 +1,51 @@
-﻿using Portfolio.Entities.Base;
+﻿using Portfolio.Data.Utility;
+using Portfolio.Entities.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Portfolio.Data
 {
     public class InMemoryRepository<T> : IRepository<T> where T : EntityBase
     {
+        protected virtual List<T> Entities { get; set; }
         public InMemoryRepository()
         {
-
         }
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return Entities;
         }
 
         public string Create(T entity)
         {
-            throw new NotImplementedException();
+            Entities.Add(entity);
+            return "Success";
         }
 
         public T Read(int id)
         {
-            throw new NotImplementedException();
+            return Entities.SingleOrDefault(e => e.Id == id);
         }
 
         public string Update(int id, T entity)
         {
-            throw new NotImplementedException();
+            var record = Entities.SingleOrDefault(r => r.Id == entity.Id);
+
+            if (record != null)
+            {
+                Entities.ReplaceWith(record, entity);
+            }
+
+            return "Success";
         }
 
         public string Delete(int id)
         {
-            throw new NotImplementedException();
+            var entity = Entities.SingleOrDefault(e => e.Id == id);
+            Entities.Remove(entity);
+            return "Succesfully deleted";
         }
     }
 }
