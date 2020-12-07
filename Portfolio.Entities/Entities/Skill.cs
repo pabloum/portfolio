@@ -3,7 +3,7 @@ using Portfolio.Entities.DTOs;
 
 namespace Portfolio.Entities.Entities
 {
-    public class Skill : EntityBase
+    public class Skill : BaseEntity
     {
         public string Name { get; set; }
         public SkillType Category { get; set; }

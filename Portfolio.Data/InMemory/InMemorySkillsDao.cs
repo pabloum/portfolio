@@ -11,7 +11,6 @@ namespace Portfolio.Data.InMemory
     public class InMemorySkillsDao : IDao<Skill>
     {
         private List<Skill> Skills { get; set; }
-        public SkillFactory skillFactory { get; set; }
         public InMemorySkillsDao()
         {
             var technicalSkillFactory = new TechnicalSkillFactory();

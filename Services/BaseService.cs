@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Services
 {
-    public class BaseService<T> : IBaseService<T> where T : EntityBase
+    public class BaseService<T> : IBaseService<T> where T : BaseEntity
     {
         protected IRepository<T> _repository;
 

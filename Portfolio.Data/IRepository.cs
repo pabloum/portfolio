@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Data
 {
-    public interface IRepository<T> where T : EntityBase
+    public interface IRepository<T> where T : BaseEntity
     {
         IEnumerable<T> GetAll();
         string Create(T entity);

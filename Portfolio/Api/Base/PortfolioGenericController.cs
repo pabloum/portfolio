@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Portfolio.Api.Base
 {
-    public abstract class PortfolioGenericController<T> : PortfolioBaseController where T : EntityBase
+    public abstract class PortfolioGenericController<T> : PortfolioBaseController where T : BaseEntity
     {
         protected readonly IBaseService<T> _service;
         public PortfolioGenericController(IBaseService<T> service)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Services
 {
-    public interface IBaseService<T> where T : EntityBase
+    public interface IBaseService<T> where T : BaseEntity
     {
         IEnumerable<T> GetAll();
         string Create(T entity);

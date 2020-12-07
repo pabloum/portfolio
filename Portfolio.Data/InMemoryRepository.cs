@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Portfolio.Data
 {
-    public class InMemoryRepository<T> : IRepository<T> where T : EntityBase
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         protected virtual List<T> Entities { get; set; }
         public InMemoryRepository()

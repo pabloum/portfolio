@@ -3,9 +3,8 @@ using Portfolio.Entities.Entities;
 
 namespace Portfolio.Entities.DTOs
 {
-    public class ProjectDto : EntityBase
+    public class ProjectDto : BaseDto
     {
-        public int Id { get; set; }
         public string ProjectName { get; set; }
         public string Technologies { get; set; }
         public string Description { get; set; }

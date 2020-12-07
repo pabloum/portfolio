@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Portfolio.Data
 {
-    public class Repository<T> : IRepository<T> where T : EntityBase
+    public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly DbContextOptions<PortfolioDbContext> _db;
 
@@ -58,6 +58,6 @@ namespace Portfolio.Data
                 context.Remove<T>(entity);
                 return "Successfully deleted";
             }
-        }        
+        }
     }
 }

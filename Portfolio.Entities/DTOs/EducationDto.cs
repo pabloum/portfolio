@@ -1,12 +1,14 @@
 ﻿using Portfolio.Entities.Base;
 using Portfolio.Entities.Entities;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Portfolio.Entities.DTOs
 {    
-    public class EducationDto : EntityBase
+    public class EducationDto : BaseDto
     {
-        public int Id { get; set; }
+        [CheckUniversity]
         public string University { get; set; }
         public string Title { get; set; }
         public DateTime DateBegining { get; set; }
@@ -16,6 +18,31 @@ namespace Portfolio.Entities.DTOs
         public Education ToEntity()
         {
             return _mapper.Map<Education>(this);
+        }
+    }
+
+    public class CheckUniversity : ValidationAttribute
+    {
+        private List<string> UniversityName = new List<string>();
+        public CheckUniversity()
+        {
+            UniversityName = new List<string>
+            {
+                "Universidad de los Andes",
+                "Universidad EAFIT",
+                "Universidad EIA",
+                "Universidad Pontificia Bolivariana",
+                "Javeriana",
+                "Universidad de Medellín",
+                "Universidad Nacional",
+                "Universidad de Antioquia",
+                "Politénico Jaime Isaza Cadavid",
+                "Harvard"
+            };
+        }
+        public override bool IsValid(object value)
+        {
+            return UniversityName.Contains((string)value);
         }
     }
 }

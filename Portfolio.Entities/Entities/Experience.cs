@@ -4,7 +4,7 @@ using System;
 
 namespace Portfolio.Entities.Entities
 {
-    public class Experience : EntityBase
+    public class Experience : BaseEntity
     {
         public string Company { get; set; }
         public string Position { get; set; }

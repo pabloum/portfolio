@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Portfolio.Entities
 {
-    public class PersonalInformation : EntityBase
+    public class PersonalInformation : BaseEntity
     {
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
